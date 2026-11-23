@@ -4,7 +4,7 @@ Todo el material está en **un solo repositorio** y se publica con GitHub Pages 
 
 **https://miusuariohoy.github.io/Actividad-HTML-y-Git-hub/**
 
-Diseñado por **Profesora Alejandra Moreira**.
+Diseñado por **la Profesora Alejandra Moreira**.
 
 ## Estructura
 

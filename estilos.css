@@ -143,15 +143,6 @@ button.limpiar:hover{background:#d1d5db}
 .si{color:var(--verde);font-weight:700}
 .no{color:var(--rojo);font-weight:700}
 .pista{display:block;margin-top:.15rem;color:#92400e;font-weight:400;font-size:.85rem}
-details.solucion{
-  margin-top:.7rem;background:#fff;border:1px solid var(--borde);
-  border-radius:8px;padding:.5rem .75rem;
-}
-details.solucion summary{cursor:pointer;font-weight:700;color:var(--rojo)}
-details.solucion pre{
-  white-space:pre-wrap;font-family:Consolas,"Courier New",monospace;
-  font-size:.84rem;margin:.5rem 0 0;
-}
 .pasos-actividad{margin:1rem 0}
 .paso-item{
   display:flex;gap:.8rem;align-items:flex-start;
