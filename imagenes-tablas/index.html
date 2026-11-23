@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Guía interactiva de imágenes y tablas en HTML5: atributos de img, alt accesible, rutas, formatos, figure y tablas con caption, thead, tbody y scope. Ejercicios autocorregibles.">
+<title>HTML · Imágenes y tablas</title>
+<link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Ir al contenido</a>
+
+<header class="hero">
+  <h1>HTML · Imágenes y tablas</h1>
+  <p>Insertá imágenes con sentido y organizá datos en filas y columnas, con ejemplos y práctica autocorregible.</p>
+  <p class="objetivos"><strong>Al terminar vas a:</strong> explicar los atributos de <code class="inline">&lt;img&gt;</code>; escribir un <code class="inline">alt</code> útil; elegir rutas y formatos; y construir tablas accesibles con <code class="inline">&lt;caption&gt;</code> y <code class="inline">scope</code>.</p>
+  <span class="badge">Guía interactiva · teoría + ejemplos + ejercicios corregibles</span>
+</header>
+
+<nav class="solo" aria-label="Navegación de la guía">
+  <a href="../index.html">🏠 Inicio</a>
+  <a href="#imagenes">1 · Imágenes</a>
+  <a href="#tablas">2 · Tablas</a>
+  <a href="#ejemplo">3 · Ejemplo</a>
+  <a href="#ejercicios">4 · Ejercitación</a>
+  <a href="#entrega">5 · Entrega</a>
+</nav>
+
+<main id="main">
+
+<section id="imagenes">
+  <h2 class="tema">1 · Imágenes con &lt;img&gt;</h2>
+
+  <h3>1. ¿Qué es &lt;img&gt;?</h3>
+  <p>La etiqueta <code class="inline">&lt;img&gt;</code> coloca una imagen en la página.
+  Es un <strong>elemento vacío</strong>: no tiene etiqueta de cierre, así que
+  <strong>no se escribe</strong> <code class="inline">&lt;/img&gt;</code>.
+  Los atributos van siempre adentro de la etiqueta de apertura.</p>
+<pre class="codigo">&lt;img src="img/logo.png" alt="Logo de la escuela" width="240" height="120"&gt;</pre>
+  <div class="nota"><strong>Regla de oro:</strong> <code class="inline">src</code> indica qué imagen mostrar y
+  <code class="inline">alt</code> explica qué significa esa imagen. Uno sin el otro deja la página incompleta.</div>
+
+  <h3>2. Los atributos de &lt;img&gt;</h3>
+  <div class="tabla-scroll">
+  <table class="datos">
+    <tr><th scope="col">Atributo</th><th scope="col">Para qué sirve</th><th scope="col">Ejemplo</th></tr>
+    <tr><th scope="row"><code class="inline">src</code></th><td>Ruta o dirección del archivo de imagen. Es obligatorio.</td><td><code class="inline">src="img/foto.jpg"</code></td></tr>
+    <tr><th scope="row"><code class="inline">alt</code></th><td>Texto alternativo: se lee en voz alta, aparece si la imagen no carga y ayuda al SEO. Es obligatorio (puede estar vacío).</td><td><code class="inline">alt="Perro paseando en el parque"</code></td></tr>
+    <tr><th scope="row"><code class="inline">width</code> / <code class="inline">height</code></th><td>Ancho y alto en píxeles. Reservan el espacio y evitan que la página «salte» al cargar.</td><td><code class="inline">width="480" height="240"</code></td></tr>
+    <tr><th scope="row"><code class="inline">loading</code></th><td><code class="inline">lazy</code> carga la imagen recién cuando se acerca al viewport. Útil para páginas largas.</td><td><code class="inline">loading="lazy"</code></td></tr>
+    <tr><th scope="row"><code class="inline">title</code></th><td>Opcional: muestra una ayuda al pasar el mouse. <strong>No reemplaza al alt</strong>.</td><td><code class="inline">title="Ampliar"</code></td></tr>
+  </table>
+  </div>
+
+  <h3>3. src: rutas relativas y absolutas</h3>
+  <p>Casi siempre conviene usar <strong>rutas relativas</strong>: el archivo se busca a partir de donde
+  está tu HTML. Así el sitio funciona igual en tu computadora y en GitHub Pages.</p>
+  <div class="tabla-scroll">
+  <table class="datos">
+    <tr><th scope="col">Ruta</th><th scope="col">Qué significa</th></tr>
+    <tr><th scope="row">img/logo.png</th><td>Archivo <code class="inline">logo.png</code> dentro de la carpeta <code class="inline">img/</code>.</td></tr>
+    <tr><th scope="row">../img/logo.png</th><td>Sube una carpeta y entra a <code class="inline">img/</code> (útil cuando el HTML está en otra carpeta).</td></tr>
+    <tr><th scope="row">foto.jpg</th><td>Archivo que está al lado del HTML.</td></tr>
+    <tr><th scope="row">https://ejemplo.com/foto.jpg</th><td>Imagen externa: depende de otro sitio, puede cambiar o dejar de funcionar.</td></tr>
+  </table>
+  </div>
+  <p class="nota"><strong>Cuidado:</strong> en GitHub Pages las mayúsculas importan.
+  <code class="inline">Logo.png</code> y <code class="inline">logo.png</code> son archivos distintos.
+  Evitá espacios y acentos en los nombres: usá <code class="inline">foto-playa.jpg</code>.</p>
+
+  <h3>4. alt: el atributo más importante</h3>
+  <ul>
+    <li>Si la imagen <strong>transmite información</strong>, describí esa información: <code class="inline">alt="Gráfico de ventas: enero 120, febrero 180"</code>.</li>
+    <li>Si es <strong>decorativa</strong> (un borde, un adorno), dejá el alt vacío: <code class="inline">alt=""</code>. Así el lector de pantalla la ignora.</li>
+    <li>Si la imagen es un <strong>enlace o botón</strong>, describí el destino o la acción: <code class="inline">alt="Ir al formulario de contacto"</code>.</li>
+    <li>No empieces con «Imagen de…» ni repitas el texto que ya dice el título. Sé breve y concreto (≈ 125 caracteres).</li>
+  </ul>
+<pre class="codigo">&lt;!-- Informativa --&gt;
+&lt;img src="img/grafo.png" alt="Ventas: enero 120, febrero 180"&gt;
+
+&lt;!-- Decorativa --&gt;
+&lt;img src="img/adorno.svg" alt=""&gt;
+
+&lt;!-- Enlace --&gt;
+&lt;a href="contacto.html"&gt;&lt;img src="img/sobre.png" alt="Ir a contacto"&gt;&lt;/a&gt;</pre>
+
+  <h3>5. Tamaño y diseño adaptable</h3>
+  <p>Siempre poné <code class="inline">width</code> y <code class="inline">height</code> en el HTML, y después
+  dejá que CSS haga que la imagen se achique en pantallas chicas:</p>
+<pre class="codigo">&lt;img src="img/foto.jpg" alt="Playa al atardecer" width="800" height="450" class="responsive"&gt;
+
+/* En estilos.css */
+.responsive{ max-width:100%; height:auto; display:block; }</pre>
+  <p>Con <code class="inline">max-width:100%</code> la imagen nunca se sale de su contenedor;
+  con <code class="inline">height:auto</code> mantiene su proporción.</p>
+
+  <h3>6. Formatos más usados</h3>
+  <div class="tabla-scroll">
+  <table class="datos">
+    <tr><th scope="col">Formato</th><th scope="col">Ideal para</th><th scope="col">Observación</th></tr>
+    <tr><th scope="row">JPG</th><td>Fotos con muchos colores</td><td>Comprime bien; no tiene transparencia.</td></tr>
+    <tr><th scope="row">PNG</th><td>Logos, capturas, transparencia</td><td>Puede pesar más que un JPG.</td></tr>
+    <tr><th scope="row">WebP</th><td>Fotos y gráficos modernos</td><td>Buena calidad con menos peso; muy usado hoy.</td></tr>
+    <tr><th scope="row">SVG</th><td>Iconos, logos, dibujos vectoriales</td><td>No pierde calidad al agrandar; se edita con código.</td></tr>
+    <tr><th scope="row">GIF</th><td>Animaciones cortas</td><td>Paleta limitada; para video conviene otro formato.</td></tr>
+  </table>
+  </div>
+
+  <h3>7. figure y figcaption</h3>
+  <p>Cuando querés una imagen con <strong>epígrafe</strong>, envolvela en
+  <code class="inline">&lt;figure&gt;</code> y agregá <code class="inline">&lt;figcaption&gt;</code>
+  con el texto de la referencia.</p>
+<pre class="codigo">&lt;figure&gt;
+  &lt;img src="img/mapa.png" alt="Mapa del recorrido de la excursión"&gt;
+  &lt;figcaption&gt;Figura 1: recorrido de la excursión.&lt;/figcaption&gt;
+&lt;/figure&gt;</pre>
+
+  <h3>8. Accesibilidad: resumen</h3>
+  <ul>
+    <li>Toda imagen lleva <code class="inline">alt</code>, aunque sea <code class="inline">alt=""</code>.</li>
+    <li>El texto alternativo describe el <strong>contenido o la función</strong>, no el archivo (<code class="inline">foto123.jpg</code> no sirve).</li>
+    <li>Si la imagen es puramente decorativa, <code class="inline">alt=""</code> y listo.</li>
+    <li>Si incluye texto importante (un cartel, un gráfico), repetí ese texto en el <code class="inline">alt</code> o cerca.</li>
+    <li>Usá <code class="inline">figure</code> + <code class="inline">figcaption</code> para imágenes con referencia.</li>
+  </ul>
+</section>
+
+<section id="tablas">
+  <h2 class="tema">2 · Tablas con &lt;table&gt;</h2>
+
+  <h3>1. ¿Qué es una tabla HTML?</h3>
+  <p>Una tabla organiza información en <strong>filas y columnas</strong>. Se usa para datos
+  que realmente tienen esa forma: notas, horarios, precios, resultados deportivos,
+  comparaciones. <strong>No se usa para acomodar visualmente una página</strong>: para eso existe CSS.</p>
+  <div class="nota"><strong>Regla de oro:</strong> si el dato necesita una fila y una columna
+  para entenderse, va en una tabla. Si solo querés ubicar elementos en la pantalla, usá CSS.</div>
+
+  <h3>2. Estructura mínima</h3>
+  <p>Una tabla se arma con <code class="inline">&lt;table&gt;</code>. Cada fila es
+  <code class="inline">&lt;tr&gt;</code>. Dentro de la fila van celdas de encabezado
+  <code class="inline">&lt;th&gt;</code> y celdas de dato <code class="inline">&lt;td&gt;</code>.</p>
+<pre class="codigo">&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Producto&lt;/th&gt;
+    &lt;th&gt;Precio&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Teclado&lt;/td&gt;
+    &lt;td&gt;$8.500&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+  <div class="tabla-scroll">
+  <table class="datos">
+    <tr><th scope="col">Etiqueta</th><th scope="col">Qué significa</th><th scope="col">Dónde va</th></tr>
+    <tr><th scope="row">&lt;table&gt;</th><td>Contenedor de toda la tabla</td><td>Afuera, envolviendo todo</td></tr>
+    <tr><th scope="row">&lt;tr&gt;</th><td>Table Row: una fila</td><td>Dentro de &lt;table&gt;</td></tr>
+    <tr><th scope="row">&lt;th&gt;</th><td>Table Header: celda de encabezado</td><td>Dentro de &lt;tr&gt;</td></tr>
+    <tr><th scope="row">&lt;td&gt;</th><td>Table Data: celda con un dato</td><td>Dentro de &lt;tr&gt;</td></tr>
+  </table>
+  </div>
+
+  <h3>3. Caption, thead, tbody y tfoot</h3>
+  <p>Estas etiquetas dividen la tabla en zonas y la hacen más clara para el navegador,
+  los lectores de pantalla y el CSS:</p>
+  <ul>
+    <li><code class="inline">&lt;caption&gt;</code>: título de la tabla. Va justo después de <code class="inline">&lt;table&gt;</code>.</li>
+    <li><code class="inline">&lt;thead&gt;</code>: bloque con la fila de encabezados.</li>
+    <li><code class="inline">&lt;tbody&gt;</code>: bloque con las filas de datos.</li>
+    <li><code class="inline">&lt;tfoot&gt;</code>: bloque con totales o resumen final.</li>
+  </ul>
+<pre class="codigo">&lt;table&gt;
+  &lt;caption&gt;Precios de la tienda&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Producto&lt;/th&gt;&lt;th&gt;Precio&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Teclado&lt;/td&gt;&lt;td&gt;$8.500&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Mouse&lt;/td&gt;&lt;td&gt;$4.200&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;&lt;th&gt;Total&lt;/th&gt;&lt;td&gt;$12.700&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</pre>
+
+  <h3>4. Combinar celdas: colspan y rowspan</h3>
+  <p>A veces una celda ocupa más de una columna o más de una fila:</p>
+  <ul>
+    <li><code class="inline">colspan="2"</code> → la celda se extiende 2 columnas hacia la derecha.</li>
+    <li><code class="inline">rowspan="2"</code> → la celda se extiende 2 filas hacia abajo.</li>
+  </ul>
+<pre class="codigo">&lt;tr&gt;
+  &lt;th colspan="2"&gt;Datos del cliente&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td rowspan="2"&gt;Ana&lt;/td&gt;
+  &lt;td&gt;Teléfono&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;Email&lt;/td&gt;
+&lt;/tr&gt;</pre>
+
+  <h3>5. Accesibilidad</h3>
+  <ul>
+    <li>Usá <code class="inline">&lt;caption&gt;</code> para decir qué contiene la tabla.</li>
+    <li>En <code class="inline">&lt;th&gt;</code> agregá <code class="inline">scope="col"</code> o <code class="inline">scope="row"</code>.</li>
+    <li>No dejes encabezados vacíos solo para pegar un borde.</li>
+    <li>El orden de lectura debe ser el mismo que el orden visual.</li>
+  </ul>
+<pre class="codigo">&lt;th scope="col"&gt;Nombre&lt;/th&gt;
+&lt;th scope="row"&gt;Ana&lt;/th&gt;</pre>
+</section>
+
+<section id="ejemplo">
+  <h2 class="tema">3 · Ejemplo completo</h2>
+
+  <h3>Una imagen con epígrafe</h3>
+  <p>Así se ve y así se escribe una imagen local con texto alternativo y su referencia:</p>
+  <div class="ejemplo">
+    <figure>
+      <img class="demo-img" src="img/ejemplo-html.svg" alt="Etiqueta HTML5 roja con el texto &lt;img&gt; en el centro" width="480" height="240">
+      <figcaption>Figura 1: ejemplo de imagen local con texto alternativo.</figcaption>
+    </figure>
+  </div>
+<pre class="codigo">&lt;figure&gt;
+  &lt;img src="img/ejemplo-html.svg"
+       alt="Etiqueta HTML5 roja con el texto &lt;img&gt; en el centro"
+       width="480" height="240" class="demo-img"&gt;
+  &lt;figcaption&gt;Figura 1: ejemplo de imagen local con texto alternativo.&lt;/figcaption&gt;
+&lt;/figure&gt;</pre>
+
+  <h3>Una tabla con título, zonas y resumen</h3>
+  <div class="ejemplo">
+    <div class="tabla-scroll">
+    <table class="datos">
+      <caption>Notas del curso</caption>
+      <thead>
+        <tr><th scope="col">Alumno</th><th scope="col">Primer parcial</th><th scope="col">Segundo parcial</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Ana Pérez</th><td>8</td><td>9</td></tr>
+        <tr><th scope="row">Luis Gómez</th><td>6</td><td>7</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><th scope="row">Promedio</th><td>7</td><td>8</td></tr>
+      </tfoot>
+    </table>
+    </div>
+  </div>
+<pre class="codigo">&lt;table&gt;
+  &lt;caption&gt;Notas del curso&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Alumno&lt;/th&gt;
+      &lt;th scope="col"&gt;Primer parcial&lt;/th&gt;
+      &lt;th scope="col"&gt;Segundo parcial&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;th scope="row"&gt;Ana Pérez&lt;/th&gt;&lt;td&gt;8&lt;/td&gt;&lt;td&gt;9&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;th scope="row"&gt;Luis Gómez&lt;/th&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;7&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;&lt;th scope="row"&gt;Promedio&lt;/th&gt;&lt;td&gt;7&lt;/td&gt;&lt;td&gt;8&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</pre>
+</section>
+
+<section id="ejercicios">
+  <h2 class="tema">4 · Ejercitación autocorregible</h2>
+  <p>Escribí el código HTML en cada cuadro y presioná <strong>✅ Corregir</strong>.
+  Si falla algo, aparece una pista al lado del requisito.</p>
+
+  <article class="ejercicio" data-id="i1">
+    <h3>✍️ Ejercicio 1: imagen informativa <span class="nivel">Fácil</span></h3>
+    <p class="consigna">Escribí una imagen con <code class="inline">src="img/playa.jpg"</code> y un
+    <code class="inline">alt</code> que describa una playa al atardecer. Recordá que <code class="inline">&lt;img&gt;</code> no lleva cierre.</p>
+    <textarea class="respuesta" spellcheck="false" placeholder="Escribí tu imagen…"></textarea>
+    <div class="acciones">
+      <button type="button" class="accion corregir">✅ Corregir</button>
+      <button type="button" class="accion limpiar">Limpiar</button>
+    </div>
+    <div class="resultado"></div>
+    <details class="solucion"><summary>Ver solución esperada</summary>
+      <pre>&lt;img src="img/playa.jpg" alt="Playa al atardecer"&gt;</pre>
+    </details>
+  </article>
+
+  <article class="ejercicio" data-id="i2">
+    <h3>✍️ Ejercicio 2: imagen decorativa y tamaño <span class="nivel">Medio</span></h3>
+    <p class="consigna">Usá una imagen decorativa con <code class="inline">alt=""</code>, ruta relativa
+    <code class="inline">img/adorno.svg</code> y los atributos <code class="inline">width</code> y <code class="inline">height</code>.</p>
+    <textarea class="respuesta" spellcheck="false" placeholder="Escribí tu imagen…"></textarea>
+    <div class="acciones">
+      <button type="button" class="accion corregir">✅ Corregir</button>
+      <button type="button" class="accion limpiar">Limpiar</button>
+    </div>
+    <div class="resultado"></div>
+    <details class="solucion"><summary>Ver solución esperada</summary>
+      <pre>&lt;img src="img/adorno.svg" alt="" width="120" height="120"&gt;</pre>
+    </details>
+  </article>
+
+  <article class="ejercicio" data-id="i3">
+    <h3>✍️ Ejercicio 3: figura con epígrafe <span class="nivel">Medio</span></h3>
+    <p class="consigna">Envolvé una imagen con <code class="inline">&lt;figure&gt;</code>, agregá un
+    <code class="inline">&lt;figcaption&gt;</code> con texto y dale a la imagen un <code class="inline">alt</code> descriptivo.</p>
+    <textarea class="respuesta" spellcheck="false" placeholder="Escribí tu figura…"></textarea>
+    <div class="acciones">
+      <button type="button" class="accion corregir">✅ Corregir</button>
+      <button type="button" class="accion limpiar">Limpiar</button>
+    </div>
+    <div class="resultado"></div>
+    <details class="solucion"><summary>Ver solución esperada</summary>
+      <pre>&lt;figure&gt;
+  &lt;img src="img/mapa.png" alt="Mapa del recorrido"&gt;
+  &lt;figcaption&gt;Figura 1: recorrido de la excursión.&lt;/figcaption&gt;
+&lt;/figure&gt;</pre>
+    </details>
+  </article>
+
+  <article class="ejercicio" data-id="t1">
+    <h3>✍️ Ejercicio 4: estructura básica <span class="nivel">Fácil</span></h3>
+    <p class="consigna">Armá una tabla con una fila de encabezados y una fila de datos. Usá
+    <code class="inline">&lt;table&gt;</code>, <code class="inline">&lt;tr&gt;</code>,
+    <code class="inline">&lt;th&gt;</code> y <code class="inline">&lt;td&gt;</code>.</p>
+    <textarea class="respuesta" spellcheck="false" placeholder="Escribí tu tabla…"></textarea>
+    <div class="acciones">
+      <button type="button" class="accion corregir">✅ Corregir</button>
+      <button type="button" class="accion limpiar">Limpiar</button>
+    </div>
+    <div class="resultado"></div>
+    <details class="solucion"><summary>Ver solución esperada</summary>
+      <pre>&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;Nombre&lt;/th&gt;&lt;th&gt;Edad&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Ana&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre>
+    </details>
+  </article>
+
+  <article class="ejercicio" data-id="t2">
+    <h3>✍️ Ejercicio 5: título y zonas <span class="nivel">Medio</span></h3>
+    <p class="consigna">Agregá <code class="inline">&lt;caption&gt;</code>,
+    <code class="inline">&lt;thead&gt;</code> y <code class="inline">&lt;tbody&gt;</code> a una tabla
+    con dos columnas.</p>
+    <textarea class="respuesta" spellcheck="false" placeholder="Escribí tu tabla…"></textarea>
+    <div class="acciones">
+      <button type="button" class="accion corregir">✅ Corregir</button>
+      <button type="button" class="accion limpiar">Limpiar</button>
+    </div>
+    <div class="resultado"></div>
+    <details class="solucion"><summary>Ver solución esperada</summary>
+      <pre>&lt;table&gt;
+  &lt;caption&gt;Lista de productos&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Producto&lt;/th&gt;&lt;th&gt;Precio&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Teclado&lt;/td&gt;&lt;td&gt;8500&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+    </details>
+  </article>
+
+  <article class="ejercicio" data-id="t3">
+    <h3>✍️ Ejercicio 6: combinar celdas <span class="nivel">Medio</span></h3>
+    <p class="consigna">Usá <code class="inline">colspan</code> y <code class="inline">rowspan</code>
+    en la misma tabla.</p>
+    <textarea class="respuesta" spellcheck="false" placeholder="Escribí tu tabla…"></textarea>
+    <div class="acciones">
+      <button type="button" class="accion corregir">✅ Corregir</button>
+      <button type="button" class="accion limpiar">Limpiar</button>
+    </div>
+    <div class="resultado"></div>
+    <details class="solucion"><summary>Ver solución esperada</summary>
+      <pre>&lt;table&gt;
+  &lt;tr&gt;&lt;th colspan="2"&gt;Datos&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td rowspan="2"&gt;Ana&lt;/td&gt;&lt;td&gt;Teléfono&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Email&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre>
+    </details>
+  </article>
+
+  <article class="ejercicio" data-id="t4">
+    <h3>✍️ Ejercicio 7: tabla accesible <span class="nivel">Difícil</span></h3>
+    <p class="consigna">Escribí una tabla con <code class="inline">&lt;caption&gt;</code> y encabezados
+    que usen <code class="inline">scope="col"</code> y <code class="inline">scope="row"</code>.</p>
+    <textarea class="respuesta" spellcheck="false" placeholder="Escribí tu tabla…"></textarea>
+    <div class="acciones">
+      <button type="button" class="accion corregir">✅ Corregir</button>
+      <button type="button" class="accion limpiar">Limpiar</button>
+    </div>
+    <div class="resultado"></div>
+    <details class="solucion"><summary>Ver solución esperada</summary>
+      <pre>&lt;table&gt;
+  &lt;caption&gt;Notas&lt;/caption&gt;
+  &lt;tr&gt;&lt;th scope="col"&gt;Alumno&lt;/th&gt;&lt;th scope="col"&gt;Nota&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;th scope="row"&gt;Ana&lt;/th&gt;&lt;td&gt;9&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre>
+    </details>
+  </article>
+</section>
+
+<section id="entrega">
+  <h2 class="tema">5 · Entregá tu imagen y tu tabla</h2>
+  <p>Publicá tu página en GitHub Pages y enviá el link. Antes de entregar, revisá esta checklist:</p>
+  <ul class="checklist">
+    <li>☐ La imagen usa <code class="inline">src</code> y un <code class="inline">alt</code> que describe su contenido (o <code class="inline">alt=""</code> si es decorativa).</li>
+    <li>☐ La tabla tiene <code class="inline">&lt;caption&gt;</code> y encabezados con <code class="inline">scope</code>.</li>
+    <li>☐ El link abre y muestra tu trabajo (probalo vos primero).</li>
+    <li>☐ Probaste la página en el celular o con la vista móvil del navegador.</li>
+  </ul>
+  <p>La entrega se guarda como <strong>Entrega HTML Imágenes y Tablas</strong> en el repositorio <code class="inline">inform</code>, sin nota, y aparece en el informe en unos minutos.</p>
+
+  <div class="ejemplo">
+    <form class="entrega-form" id="form-entrega" data-examen="entrega-html-imagenes-tablas" data-titulo="Entrega HTML Imágenes y Tablas" data-detalle="Link de tu imagen y tabla">
+      <fieldset>
+        <legend>Datos de la entrega</legend>
+        <label for="ent-nombre">Nombre:</label>
+        <input id="ent-nombre" name="nombre" type="text" placeholder="Tu nombre" required>
+        <label for="ent-apellido">Apellido:</label>
+        <input id="ent-apellido" name="apellido" type="text" placeholder="Tu apellido" required>
+        <label for="ent-curso">Curso:</label>
+        <input id="ent-curso" name="curso" type="text" placeholder="Ej: 3º A" required>
+        <label for="ent-link">Link de tu página publicada:</label>
+        <input id="ent-link" name="link" type="url" placeholder="https://..." required>
+        <button type="submit">Entregar</button>
+      </fieldset>
+    </form>
+    <div class="estado-entrega" id="estado-entrega" role="status" aria-live="polite"></div>
+    <p class="nota"><strong>Privacidad:</strong> guardamos nombre, apellido, curso, link y fecha de envío. El envío usa un canal público con el contenido cifrado; no pedimos contraseñas ni datos sensibles.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>Guía de HTML · Imágenes y tablas · Diseñado por Profesora Alejandra Moreira</footer>
+
+<script>
+/* ---------- Utilidades ---------- */
+window.EJERCICIOS = {
+  i1: { requisitos: [
+    { d:'Usa &lt;img&gt;', p:'Escribí &lt;img src="…" alt="…"&gt;.', f:t => etiquetas(t,'img').length >= 1 },
+    { d:'El src apunta a img/playa.jpg', p:'El atributo src tiene que ser src="img/playa.jpg".', f:t => (atributo(primerImg(t),'src') || '').toLowerCase() === 'img/playa.jpg' },
+    { d:'Tiene un alt descriptivo', p:'Agregá alt="Playa al atardecer" (u otra descripción clara).', f:t => !!String(atributo(primerImg(t),'alt') || '').trim() },
+    { d:'No cierres con &lt;/img&gt;', p:'&lt;img&gt; es un elemento vacío: no lleves etiqueta de cierre.', f:t => !/<\/img\s*>/i.test(t) }
+  ]},
+  i2: { requisitos: [
+    { d:'Usa &lt;img&gt; con alt="" (decorativa)', p:'Para una imagen decorativa, escribí exactamente alt="".', f:t => atributo(primerImg(t),'alt') === '' },
+    { d:'La ruta es img/adorno.svg', p:'Escribí src="img/adorno.svg".', f:t => (atributo(primerImg(t),'src') || '').toLowerCase() === 'img/adorno.svg' },
+    { d:'Tiene width y height', p:'Agregá, por ejemplo, width="120" height="120".', f:t => !!atributo(primerImg(t),'width') && !!atributo(primerImg(t),'height') }
+  ]},
+  i3: { requisitos: [
+    { d:'Usa &lt;figure&gt;', p:'Envolvé todo con &lt;figure&gt; y &lt;/figure&gt;.', f:t => etiquetasConContenido(t,'figure').length >= 1 },
+    { d:'La imagen está dentro del figure', p:'Poné el &lt;img&gt; adentro del &lt;figure&gt;.', f:t => etiquetasConContenido(t,'figure').some(f => etiquetas(f.contenido,'img').length >= 1) },
+    { d:'Usa &lt;figcaption&gt; con texto', p:'Agregá &lt;figcaption&gt;Figura 1: …&lt;/figcaption&gt;.', f:t => etiquetasConContenido(t,'figcaption').some(c => textoVisible(c.contenido).length > 0) },
+    { d:'La imagen tiene alt descriptivo', p:'No dejes el alt vacío en una imagen que aporta información.', f:t => !!String(atributo(primerImg(t),'alt') || '').trim() }
+  ]},
+  t1: { requisitos: [
+    { d:'Usa &lt;table&gt;', p:'Envolvé todo con &lt;table&gt; y &lt;/table&gt;.', f:t => etiquetas(t,'table').length >= 1 },
+    { d:'Usa al menos dos &lt;tr&gt;', p:'Necesitás una fila de encabezados y otra de datos.', f:t => etiquetas(t,'tr').length >= 2 },
+    { d:'Usa &lt;th&gt;', p:'Las celdas de encabezado van en &lt;th&gt;.', f:t => etiquetas(t,'th').length >= 1 },
+    { d:'Usa &lt;td&gt;', p:'Las celdas con datos van en &lt;td&gt;.', f:t => etiquetas(t,'td').length >= 1 }
+  ]},
+  t2: { requisitos: [
+    { d:'Usa &lt;table&gt;', p:'Envolvé todo con &lt;table&gt; y &lt;/table&gt;.', f:t => etiquetas(t,'table').length >= 1 },
+    { d:'Usa &lt;caption&gt;', p:'Poné el título justo después de &lt;table&gt;.', f:t => etiquetas(t,'caption').length >= 1 },
+    { d:'Usa &lt;thead&gt;', p:'Agregá el bloque &lt;thead&gt; con la fila de encabezados.', f:t => etiquetas(t,'thead').length >= 1 },
+    { d:'Usa &lt;tbody&gt;', p:'Agregá el bloque &lt;tbody&gt; con las filas de datos.', f:t => etiquetas(t,'tbody').length >= 1 },
+    { d:'Usa &lt;th&gt; y &lt;td&gt;', p:'Usá ambos tipos de celda dentro de las filas.', f:t => etiquetas(t,'th').length >= 1 && etiquetas(t,'td').length >= 1 }
+  ]},
+  t3: { requisitos: [
+    { d:'Usa &lt;table&gt;', p:'Envolvé todo con &lt;table&gt; y &lt;/table&gt;.', f:t => etiquetas(t,'table').length >= 1 },
+    { d:'Usa colspan', p:'Escribí colspan="2" en una celda de encabezado.', f:t => /colspan\s*=/i.test(t) },
+    { d:'Usa rowspan', p:'Escribí rowspan="2" en una celda de dato.', f:t => /rowspan\s*=/i.test(t) },
+    { d:'Usa &lt;td&gt;', p:'Las celdas con datos van en &lt;td&gt;.', f:t => etiquetas(t,'td').length >= 1 }
+  ]},
+  t4: { requisitos: [
+    { d:'Usa &lt;caption&gt;', p:'Poné un &lt;caption&gt; con el título de la tabla.', f:t => etiquetas(t,'caption').length >= 1 },
+    { d:'Usa scope="col"', p:'Agregá scope="col" a los encabezados de columna.', f:t => conScope(t,'col') },
+    { d:'Usa scope="row"', p:'Agregá scope="row" al encabezado de la fila de datos.', f:t => conScope(t,'row') },
+    { d:'Usa &lt;th&gt; y &lt;td&gt;', p:'Usá ambos tipos de celda dentro de las filas.', f:t => etiquetas(t,'th').length >= 1 && etiquetas(t,'td').length >= 1 }
+  ]}
+};
+
+</script>
+<script src="../scripts/ejercicios.js" defer></script>
+<script src="../scripts/entrega.js" defer></script>
+</body>
+</html>

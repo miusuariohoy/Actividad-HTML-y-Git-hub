@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="240" viewBox="0 0 480 240">
+  <title>Etiqueta HTML5 de ejemplo</title>
+  <rect width="480" height="240" rx="18" fill="#7f1d1d"/>
+  <rect x="24" y="24" width="432" height="192" rx="14" fill="#fee2e2"/>
+  <path d="M94 74h184a12 12 0 0 1 12 12v66a12 12 0 0 1-12 12h-132l-30 26v-26H94a12 12 0 0 1-12-12V86a12 12 0 0 1 12-12z" fill="#dc2626"/>
+  <text x="190" y="132" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">&lt;img&gt;</text>
+</svg>

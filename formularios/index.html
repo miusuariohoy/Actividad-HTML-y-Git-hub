@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Guía interactiva de formularios HTML5: para qué sirven id, for, name y type, campos accesibles con label y fieldset, ejercicios autocorregibles y cómo publicar tu formulario con GitHub Pages.">
+<title>HTML · Formularios</title>
+<link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Ir al contenido</a>
+
+<header class="hero">
+  <h1>HTML · Formularios</h1>
+  <p>Cómo pedir datos al usuario y enviarlos: etiquetas, campos, opciones y botones.</p>
+  <p class="objetivos"><strong>Al terminar vas a:</strong> explicar para qué sirven id, for, name y type; armar campos accesibles con label y fieldset; publicar tu formulario en GitHub Pages y entregar el link.</p>
+  <span class="badge">Guía interactiva · teoría + ejercicios + actividad guiada</span>
+</header>
+
+<nav class="solo" aria-label="Navegación de la guía">
+  <a href="../index.html">🏠 Inicio</a>
+  <a href="#teoria">1 · Teoría</a>
+  <a href="#ejemplo">2 · Ejemplo</a>
+  <a href="#ejercicios">3 · Ejercitación</a>
+  <a href="#actividad">4 · Actividad guiada</a>
+</nav>
+
+<main id="main">
+
+<section id="teoria">
+  <h2 class="tema">1 · Teoría: formularios en HTML5</h2>
+
+  <h3>1. ¿Qué es un formulario?</h3>
+  <p>Un formulario permite <strong>pedir datos al visitante</strong> y enviarlos a un servidor.
+  Se arma con <code class="inline">&lt;form&gt;</code> y adentro van los campos: texto,
+  contraseñas, opciones, listas, casillas y botones.</p>
+  <div class="nota"><strong>Importante:</strong> HTML solo arma la interfaz y envía los datos.
+  Para guardarlos o validarlos de verdad hace falta un lenguaje del lado del servidor.</div>
+
+  <h3>2. Estructura básica: form, action y method</h3>
+  <p><code class="inline">&lt;form&gt;</code> es el contenedor de todos los campos. Dos atributos clave:</p>
+  <div class="tabla-scroll">
+  <table class="datos">
+    <tr><th scope="col">Atributo</th><th scope="col">Qué hace</th><th scope="col">Ejemplo</th></tr>
+    <tr><th scope="row">action</th><td>Indica a dónde se envían los datos</td><td>action="/guardar.php"</td></tr>
+    <tr><th scope="row">method</th><td>Cómo se envían: get o post</td><td>method="post"</td></tr>
+  </table>
+  </div>
+  <p><strong>get</strong> manda los datos en la URL (útil para búsquedas).
+  <strong>post</strong> los manda en el cuerpo de la petición (para contraseñas o datos largos).</p>
+<pre class="codigo">&lt;form action="/guardar.php" method="post"&gt;
+  ...campos...
+&lt;/form&gt;</pre>
+
+  <h3>3. Los cuatro atributos que más se usan: id, for, name y type</h3>
+  <p>Estos cuatro atributos son los que más confunden. Cada uno hace una cosa distinta:</p>
+  <div class="tabla-scroll">
+  <table class="datos">
+    <tr><th scope="col">Atributo</th><th scope="col">Dónde va</th><th scope="col">Para qué sirve</th><th scope="col">Ejemplo</th></tr>
+    <tr>
+      <th scope="row"><code class="inline">id</code></th>
+      <td>En el campo (input, select o textarea)</td>
+      <td>Le da un nombre <strong>único dentro de la página</strong>. Es como el DNI del campo: no se puede repetir. El <code class="inline">label</code> lo usa para encontrarlo.</td>
+      <td><code class="inline">id="correo"</code></td>
+    </tr>
+    <tr>
+      <th scope="row"><code class="inline">for</code></th>
+      <td>En el <code class="inline">&lt;label&gt;</code></td>
+      <td>Dice <strong>a qué id pertenece esa etiqueta</strong>. Tiene que ser igual al id del campo. Así, al hacer clic en el texto, el campo se activa y un lector de pantalla lo anuncia.</td>
+      <td><code class="inline">for="correo"</code></td>
+    </tr>
+    <tr>
+      <th scope="row"><code class="inline">name</code></th>
+      <td>En el campo (input, select o textarea)</td>
+      <td>Es el <strong>nombre con el que se envía el dato al servidor</strong>. Aparece en la URL o en el cuerpo del mensaje. <strong>Sin name, el dato no se envía.</strong> Puede repetirse (los radio lo necesitan).</td>
+      <td><code class="inline">name="correo"</code></td>
+    </tr>
+    <tr>
+      <th scope="row"><code class="inline">type</code></th>
+      <td>Solo en <code class="inline">&lt;input&gt;</code></td>
+      <td>Define <strong>qué tipo de campo es</strong>: texto, contraseña, correo, número, fecha, casilla, botón… El navegador lo dibuja y lo valida según el tipo.</td>
+      <td><code class="inline">type="email"</code></td>
+    </tr>
+  </table>
+  </div>
+
+  <p><strong>Ejemplo de los cuatro juntos:</strong></p>
+<pre class="codigo">&lt;label for="correo"&gt;Correo:&lt;/label&gt;
+&lt;input id="correo" type="email" name="correo" placeholder="tu@correo.com" required&gt;</pre>
+  <ul>
+    <li><code class="inline">for="correo"</code> y <code class="inline">id="correo"</code> coinciden → el texto «Correo:» pertenece a ese input.</li>
+    <li><code class="inline">type="email"</code> → el navegador espera un correo y avisa si falta la <code class="inline">@</code>.</li>
+    <li><code class="inline">name="correo"</code> → cuando se envíe, el servidor recibirá algo como <code class="inline">correo=ana@mail.com</code>.</li>
+    <li><code class="inline">placeholder</code> es solo una pista; <code class="inline">required</code> obliga a completarlo.</li>
+  </ul>
+  <div class="nota"><strong>Truco para recordarlo:</strong> <code class="inline">id</code> y <code class="inline">for</code> son pareja (etiqueta ↔ campo) y deben ser iguales. <code class="inline">name</code> y <code class="inline">type</code> son del campo: uno nombra el dato que viaja y el otro define el tipo de caja.</div>
+
+  <h3>4. Tipos de input más usados</h3>
+  <div class="tabla-scroll">
+  <table class="datos">
+    <tr><th scope="col">type</th><th scope="col">Para qué sirve</th><th scope="col">Ejemplo en tu formulario</th></tr>
+    <tr><th scope="row">text</th><td>Texto simple (es el valor por defecto)</td><td>nombre, apellido, nacionalidad, curso, división</td></tr>
+    <tr><th scope="row">password</th><td>Contraseña: los caracteres se ocultan</td><td>(no hace falta acá)</td></tr>
+    <tr><th scope="row">email</th><td>Correo: valida que tenga @</td><td>(si querés agregar un correo)</td></tr>
+    <tr><th scope="row">number</th><td>Números: permite min, max y step</td><td>dni</td></tr>
+    <tr><th scope="row">date</th><td>Fecha con calendario</td><td>fecha de nacimiento</td></tr>
+    <tr><th scope="row">tel</th><td>Teléfono: acepta números, + y guiones</td><td>(teléfono, si lo pedís)</td></tr>
+    <tr><th scope="row">radio</th><td>Una opción entre varias (mismo name)</td><td>especialidad: Básico / Programación / Informática</td></tr>
+    <tr><th scope="row">checkbox</th><td>Casilla: puede marcarse o no</td><td>(opcional)</td></tr>
+    <tr><th scope="row">submit</th><td>Botón que envía el formulario</td><td>Enviar</td></tr>
+  </table>
+  </div>
+
+  <h3>5. Radio y checkbox</h3>
+  <p>Los <strong>radio</strong> comparten el mismo <code class="inline">name</code> para que solo
+  se pueda elegir uno. Los <strong>checkbox</strong> pueden marcarse varios.</p>
+<pre class="codigo">&lt;input type="radio" id="visa" name="pago" value="visa"&gt;
+&lt;label for="visa"&gt;Visa&lt;/label&gt;
+&lt;input type="radio" id="efectivo" name="pago" value="efectivo"&gt;
+&lt;label for="efectivo"&gt;Efectivo&lt;/label&gt;
+
+&lt;input type="checkbox" id="news" name="news"&gt;
+&lt;label for="news"&gt;Quiero recibir novedades&lt;/label&gt;</pre>
+  <p>Los radio también sirven para elegir <strong>una sola opción entre varias</strong>, por ejemplo
+  la especialidad (Básico, Programación o Informática): los tres llevan el mismo
+  <code class="inline">name="especialidad"</code> y cada uno su <code class="inline">id</code> distinto.</p>
+
+  <h3>6. Listas desplegables y texto largo</h3>
+  <p><code class="inline">&lt;select&gt;</code> arma una lista de opciones con
+  <code class="inline">&lt;option&gt;</code>. <code class="inline">&lt;textarea&gt;</code> permite
+  escribir varias líneas (y sí lleva etiqueta de cierre).</p>
+<pre class="codigo">&lt;label for="pais"&gt;País:&lt;/label&gt;
+&lt;select id="pais" name="pais"&gt;
+  &lt;option value="ar"&gt;Argentina&lt;/option&gt;
+  &lt;option value="uy"&gt;Uruguay&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;label for="mensaje"&gt;Mensaje:&lt;/label&gt;
+&lt;textarea id="mensaje" name="mensaje" rows="4"&gt;&lt;/textarea&gt;</pre>
+
+  <h3>7. &lt;fieldset&gt; y &lt;legend&gt;: agrupar campos</h3>
+  <p><code class="inline">&lt;fieldset&gt;</code> es un <strong>recuadro que agrupa campos que van juntos</strong>
+  (por ejemplo, todos los datos de contacto o todas las opciones de pago).
+  <code class="inline">&lt;legend&gt;</code> es el <strong>título de ese recuadro</strong> y siempre va
+  como primer hijo del fieldset.</p>
+  <p>¿Para qué sirve? Para que el formulario sea más fácil de leer y para que un lector de
+  pantalla anuncie: «Datos de contacto, grupo» antes de leer los campos.
+  Si querés que tu formulario se llame <strong>«Datos personales»</strong>, poné
+  <code class="inline">&lt;legend&gt;Datos personales&lt;/legend&gt;</code> como primer hijo del fieldset.</p>
+<pre class="codigo">&lt;fieldset&gt;
+  &lt;legend&gt;Datos de contacto&lt;/legend&gt;
+
+  &lt;label for="tel"&gt;Teléfono:&lt;/label&gt;
+  &lt;input id="tel" type="tel" name="tel"&gt;
+
+  &lt;label for="correo2"&gt;Correo:&lt;/label&gt;
+  &lt;input id="correo2" type="email" name="correo2"&gt;
+&lt;/fieldset&gt;</pre>
+  <p>El botón <code class="inline">&lt;button type="submit"&gt;Enviar&lt;/button&gt;</code> es el que
+  dispara el envío de todo el formulario.</p>
+
+  <h3>8. Accesibilidad: resumen</h3>
+  <ul>
+    <li>Todo campo lleva un <code class="inline">&lt;label&gt;</code> con <code class="inline">for</code> = <code class="inline">id</code>.</li>
+    <li>No uses solo el <code class="inline">placeholder</code> como etiqueta: desaparece al escribir.</li>
+    <li>Marcá con <code class="inline">required</code> los campos obligatorios. Si <strong>todos</strong> lo son, agregalo en cada input, en el select y en el textarea.</li>
+    <li>Agrupá opciones con <code class="inline">fieldset</code> + <code class="inline">legend</code>.</li>
+    <li>Dentro de un grupo de radio, <code class="inline">required</code> alcanza con ponerlo en uno para que se exija elegir una opción.</li>
+  </ul>
+</section>
+
+<section id="ejemplo">
+  <h2 class="tema">2 · Ejemplo completo</h2>
+  <p>Así se ve y así se escribe un formulario de contacto:</p>
+  <div class="ejemplo">
+    <form class="demo-form" id="form-demo" action="#" method="post">
+      <label for="demo-nombre">Nombre:</label>
+      <input id="demo-nombre" type="text" name="nombre" placeholder="Tu nombre" required>
+      <label for="demo-correo">Correo:</label>
+      <input id="demo-correo" type="email" name="correo" placeholder="tu@correo.com" required>
+      <fieldset>
+        <legend>Tema</legend>
+        <input id="demo-consulta" type="radio" name="tema" value="consulta">
+        <label for="demo-consulta">Consulta</label>
+        <input id="demo-soporte" type="radio" name="tema" value="soporte">
+        <label for="demo-soporte">Soporte</label>
+      </fieldset>
+      <label for="demo-mensaje">Mensaje:</label>
+      <textarea id="demo-mensaje" name="mensaje" rows="3"></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <p class="nota"><strong>Ejemplo:</strong> este formulario es solo demostrativo: al hacer clic en «Enviar» no se envía nada a ningún servidor.</p>
+  </div>
+<pre class="codigo">&lt;form action="/guardar.php" method="post"&gt;
+  &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+  &lt;input id="nombre" type="text" name="nombre" placeholder="Tu nombre" required&gt;
+
+  &lt;label for="correo"&gt;Correo:&lt;/label&gt;
+  &lt;input id="correo" type="email" name="correo" placeholder="tu@correo.com" required&gt;
+
+  &lt;fieldset&gt;
+    &lt;legend&gt;Tema&lt;/legend&gt;
+    &lt;input id="consulta" type="radio" name="tema" value="consulta"&gt;
+    &lt;label for="consulta"&gt;Consulta&lt;/label&gt;
+    &lt;input id="soporte" type="radio" name="tema" value="soporte"&gt;
+    &lt;label for="soporte"&gt;Soporte&lt;/label&gt;
+  &lt;/fieldset&gt;
+
+  &lt;label for="mensaje"&gt;Mensaje:&lt;/label&gt;
+  &lt;textarea id="mensaje" name="mensaje" rows="3"&gt;&lt;/textarea&gt;
+
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</pre>
+</section>
+
+<section id="ejercicios">
+  <h2 class="tema">3 · Ejercitación autocorregible</h2>
+  <p>Escribí el código HTML en cada cuadro y presioná <strong>✅ Corregir</strong>.</p>
+
+  <article class="ejercicio" data-id="f1">
+    <h3>✍️ Ejercicio 1.1: etiqueta y campo <span class="nivel">Fácil</span></h3>
+    <p class="consigna">Armá un formulario con un <code class="inline">&lt;label&gt;</code> para
+    «Nombre» y un <code class="inline">&lt;input type="text"&gt;</code>. El <code class="inline">for</code>
+    debe coincidir con el <code class="inline">id</code>. El texto del label tiene que decir «Nombre».</p>
+    <textarea class="respuesta" spellcheck="false" placeholder="Escribí tu formulario…"></textarea>
+    <div class="acciones">
+      <button type="button" class="accion corregir">✅ Corregir</button>
+      <button type="button" class="accion limpiar">Limpiar</button>
+    </div>
+    <div class="resultado"></div>
+  </article>
+
+  <article class="ejercicio" data-id="f2">
+    <h3>✍️ Ejercicio 1.2: tipos y atributos <span class="nivel">Medio</span></h3>
+    <p class="consigna">Usá tres campos: <code class="inline">email</code>,
+    <code class="inline">password</code> y <code class="inline">number</code>. Los tres deben tener
+    <code class="inline">name</code>, <code class="inline">required</code> y su propio
+    <code class="inline">&lt;label&gt;</code> con <code class="inline">for</code> = <code class="inline">id</code>.</p>
+    <textarea class="respuesta" spellcheck="false" placeholder="Escribí tu formulario…"></textarea>
+    <div class="acciones">
+      <button type="button" class="accion corregir">✅ Corregir</button>
+      <button type="button" class="accion limpiar">Limpiar</button>
+    </div>
+    <div class="resultado"></div>
+  </article>
+
+  <article class="ejercicio" data-id="f3">
+    <h3>✍️ Ejercicio 1.3: una opción y una casilla <span class="nivel">Medio</span></h3>
+    <p class="consigna">Escribí un <code class="inline">radio</code> y un
+    <code class="inline">checkbox</code>, cada uno con su <code class="inline">&lt;label&gt;</code>
+    usando <code class="inline">for</code> = <code class="inline">id</code>.</p>
+    <textarea class="respuesta" spellcheck="false" placeholder="Escribí tu formulario…"></textarea>
+    <div class="acciones">
+      <button type="button" class="accion corregir">✅ Corregir</button>
+      <button type="button" class="accion limpiar">Limpiar</button>
+    </div>
+    <div class="resultado"></div>
+  </article>
+
+  <article class="ejercicio" data-id="f4">
+    <h3>✍️ Ejercicio 1.4: lista, texto largo y envío <span class="nivel">Difícil</span></h3>
+    <p class="consigna">Usá un <code class="inline">&lt;select&gt;</code> con dos
+    <code class="inline">&lt;option&gt;</code>, un <code class="inline">&lt;textarea&gt;</code> y un
+    <code class="inline">&lt;button type="submit"&gt;</code>. Todos los campos con
+    <code class="inline">name</code> y con su <code class="inline">&lt;label&gt;</code>
+    usando <code class="inline">for</code> = <code class="inline">id</code>.</p>
+    <textarea class="respuesta" spellcheck="false" placeholder="Escribí tu formulario…"></textarea>
+    <div class="acciones">
+      <button type="button" class="accion corregir">✅ Corregir</button>
+      <button type="button" class="accion limpiar">Limpiar</button>
+    </div>
+    <div class="resultado"></div>
+  </article>
+</section>
+
+<section id="actividad">
+  <h2 class="tema">4 · Actividad guiada: publicá tu formulario y entregá el link</h2>
+  <p>Seguí estos pasos para crear tu propio formulario, subirlo a GitHub y entregarlo.</p>
+
+  <div class="pasos-actividad">
+    <div class="paso-item">
+      <span class="paso-num">1</span>
+      <div>
+        <h3>Creá tu proyecto: formulario «Datos personales»</h3>
+        <p>En tu computadora hacé una carpeta con dos archivos:
+        <code class="inline">index.html</code> (tu formulario) y <code class="inline">estilos.css</code>.
+        Todo el HTML va dentro de un <code class="inline">&lt;form&gt;</code>. Adentro lleva un
+        <code class="inline">&lt;fieldset&gt;</code> con
+        <code class="inline">&lt;legend&gt;Datos personales&lt;/legend&gt;</code> y estos campos,
+        <strong>todos obligatorios</strong> con <code class="inline">required</code>:</p>
+        <div class="tabla-scroll">
+  <table class="datos">
+          <tr><th scope="col">Campo</th><th scope="col">Etiqueta visible</th><th scope="col">type / control</th></tr>
+          <tr><th scope="row">nombre</th><td>Nombre:</td><td><code class="inline">text</code></td></tr>
+          <tr><th scope="row">apellido</th><td>Apellido:</td><td><code class="inline">text</code></td></tr>
+          <tr><th scope="row">dni</th><td>DNI:</td><td><code class="inline">number</code></td></tr>
+          <tr><th scope="row">fecha_nac</th><td>Fecha de nacimiento:</td><td><code class="inline">date</code></td></tr>
+          <tr><th scope="row">nacionalidad</th><td>Nacionalidad:</td><td><code class="inline">text</code></td></tr>
+          <tr><th scope="row">curso</th><td>Curso:</td><td><code class="inline">text</code></td></tr>
+          <tr><th scope="row">division</th><td>División:</td><td><code class="inline">text</code></td></tr>
+          <tr><th scope="row">especialidad</th><td>Especialidad:</td><td><code class="inline">radio</code>: Básico, Programación o Informática (mismo <code class="inline">name</code>)</td></tr>
+        </table>
+  </div>
+        <p>Cada campo lleva su <code class="inline">&lt;label&gt;</code> con
+        <code class="inline">for</code> = <code class="inline">id</code>, su
+        <code class="inline">name</code> y <code class="inline">required</code>. Cerrá con
+        <code class="inline">&lt;button type="submit"&gt;Enviar&lt;/button&gt;</code>.
+        El CSS lo vas a pedir recién en el paso siguiente.</p>
+        <p class="nota"><strong>Observación opcional:</strong> acá usamos
+        <code class="inline">type="number"</code> para el DNI porque es simple. Como mejora
+        avanzada podés usar <code class="inline">type="text" inputmode="numeric"</code>:
+        evita decimales y no pierde ceros a la izquierda.</p>
+      </div>
+    </div>
+
+    <div class="paso-item">
+      <span class="paso-num">2</span>
+      <div>
+        <h3>Pedile el CSS a una IA</h3>
+        <p>Copiá todo el código de tu <code class="inline">index.html</code> y pegalo en una IA
+        (ChatGPT, Gemini, Claude…). Pedile el <code class="inline">estilos.css</code> con el
+        diseño que quieras. Por ejemplo:</p>
+<pre class="codigo">Actuá como diseñador web. Este es mi formulario HTML:
+[pegá acá todo tu index.html]
+
+Generá un archivo estilos.css con paleta roja, etiquetas arriba de
+cada campo, bordes redondeados, botón rojo y diseño adaptable a celular.
+Comentá cada regla explicando para qué sirve.</pre>
+        <p>Después pegá lo que te devuelva en tu archivo <code class="inline">estilos.css</code>,
+        guardalo y recargá la página para ver el resultado. Probá cambiar algún color o
+        margen: la IA te ayudó, pero el criterio es tuyo.</p>
+      </div>
+    </div>
+
+    <div class="paso-item">
+      <span class="paso-num">3</span>
+      <div>
+        <h3>Creá el repositorio y subí los archivos</h3>
+        <p>Entrá a <a href="https://github.com" target="_blank" rel="noopener">github.com</a>,
+        iniciá sesión y hacé clic en <strong>New repository</strong>. Llamalo por ejemplo
+        <code class="inline">mi-formulario-html</code>, marcalo como <strong>Public</strong> y subí
+        <code class="inline">index.html</code> y <code class="inline">estilos.css</code> con
+        <strong>Commit changes</strong>.</p>
+      </div>
+    </div>
+
+    <div class="paso-item">
+      <span class="paso-num">4</span>
+      <div>
+        <h3>Activá GitHub Pages</h3>
+        <p>En tu repo andá a <strong>Settings → Pages</strong>. En <em>Branch</em> elegí
+        <strong>main</strong> y carpeta <strong>/(root)</strong>, y presioná <strong>Save</strong>.</p>
+      </div>
+    </div>
+
+    <div class="paso-item">
+      <span class="paso-num">5</span>
+      <div>
+        <h3>Copiá tu link público</h3>
+        <p>Esperá 1 o 2 minutos y abrí
+        <code class="inline">https://tu-usuario.github.io/mi-formulario-html/</code>.
+        Ese es el link que tenés que entregar.</p>
+      </div>
+    </div>
+
+    <div class="paso-item">
+      <span class="paso-num">6</span>
+      <div>
+        <h3>Entregá el link</h3>
+        <p><strong>Antes de entregar, revisá esta checklist:</strong></p>
+        <ul class="checklist">
+          <li>☐ El link abre y muestra tu formulario (probalo vos primero).</li>
+          <li>☐ Todo está dentro de <code class="inline">&lt;form&gt;</code> y los campos dentro del <code class="inline">&lt;fieldset&gt;</code>.</li>
+          <li>☐ Cada campo tiene <code class="inline">&lt;label&gt;</code> con <code class="inline">for</code> = <code class="inline">id</code>.</li>
+          <li>☐ Cada campo tiene <code class="inline">name</code> y los obligatorios, <code class="inline">required</code>.</li>
+          <li>☐ El <code class="inline">&lt;fieldset&gt;</code> empieza con <code class="inline">&lt;legend&gt;Datos personales&lt;/legend&gt;</code>.</li>
+          <li>☐ Cerrás con <code class="inline">&lt;button type="submit"&gt;Enviar&lt;/button&gt;</code>.</li>
+          <li>☐ Probaste la página en el celular o con la vista móvil del navegador.</li>
+        </ul>
+        <p>Completá el formulario de abajo con tu <strong>nombre</strong>,
+        <strong>apellido</strong>, <strong>curso</strong> y el <strong>link</strong> de tu página.
+        La entrega se guarda como <strong>Entrega HTML Formularios</strong> en el repositorio
+        <code class="inline">inform</code>, junto con tus datos. Puede tardar unos minutos
+        en aparecer en el informe.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ejemplo">
+    <form class="entrega-form" id="form-entrega" data-examen="entrega-html-formularios" data-titulo="Entrega HTML Formularios" data-detalle="Link del formulario">
+      <fieldset>
+        <legend>Datos de la entrega</legend>
+        <label for="ent-nombre">Nombre:</label>
+        <input id="ent-nombre" name="nombre" type="text" placeholder="Tu nombre" required>
+        <label for="ent-apellido">Apellido:</label>
+        <input id="ent-apellido" name="apellido" type="text" placeholder="Tu apellido" required>
+        <label for="ent-curso">Curso:</label>
+        <input id="ent-curso" name="curso" type="text" placeholder="Ej: 3º A" required>
+        <label for="ent-link">Link de tu formulario publicado:</label>
+        <input id="ent-link" name="link" type="url" placeholder="https://..." required>
+        <button type="submit">Entregar</button>
+      </fieldset>
+    </form>
+    <div class="estado-entrega" id="estado-entrega" role="status" aria-live="polite"></div>
+    <p class="nota"><strong>Privacidad:</strong> guardamos nombre, apellido, curso, link y fecha de envío. El envío usa un canal público con el contenido cifrado; no pedimos contraseñas ni datos sensibles.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>Guía de HTML · Formularios · Diseñado por Profesora Alejandra Moreira</footer>
+
+<script>
+/* ---------- Ejercicios ---------- */
+window.EJERCICIOS = {
+  f1: { requisitos: [
+    { d:'Usa &lt;form&gt;', p:'Envolvé todo con &lt;form&gt; y &lt;/form&gt;.', f:t => etiquetas(t,'form').length >= 1 },
+    { d:'Usa &lt;label&gt; con for', p:'Escribí &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;.', f:t => etiquetas(t,'label').some(a => !!atributo(a,'for')) },
+    { d:'Usa &lt;input&gt; con id', p:'Agregá id="nombre" dentro del &lt;input&gt;.', f:t => etiquetas(t,'input').some(a => !!atributo(a,'id')) },
+    { d:'Usa type="text"', p:'El campo del nombre lleva type="text".', f:t => etiquetas(t,'input').some(a => tipoDe(a) === 'text') },
+    { d:'El for del label coincide con el id del input', p:'Si el input tiene id="nombre", el label debe tener for="nombre".', f:t => labelsQueApuntan(t, idsDe(t)).length >= 1 },
+    { d:'El label dice «Nombre»', p:'Cambiá el texto del label por «Nombre:».', f:t => etiquetasConContenido(t,'label').some(function(l){
+        const f = atributo(l.attrs, 'for');
+        return !!f && idsDe(t).indexOf(f) !== -1 && textoVisible(l.contenido).indexOf('nombre') !== -1;
+    }) }
+  ]},
+  f2: { requisitos: [
+    { d:'Usa al menos tres &lt;input&gt;', p:'Necesitás un email, una clave y un número: tres &lt;input&gt;.', f:t => etiquetas(t,'input').length >= 3 },
+    { d:'Usa type="email"', p:'Uno de los campos lleva type="email".', f:t => etiquetas(t,'input').some(a => tipoDe(a) === 'email') },
+    { d:'Usa type="password"', p:'Uno de los campos lleva type="password".', f:t => etiquetas(t,'input').some(a => tipoDe(a) === 'password') },
+    { d:'Usa type="number"', p:'Uno de los campos lleva type="number".', f:t => etiquetas(t,'input').some(a => tipoDe(a) === 'number') },
+    { d:'Cada uno de los tres campos tiene su required', p:'Poné required en los tres inputs, no solo en uno.', f:t => {
+        const campos = camposDeTipo(t, ['email','password','number']);
+        return campos.length === 3 && campos.every(a => tieneAtributo(a,'required'));
+    }},
+    { d:'Cada uno de los tres campos tiene su name', p:'Poné name="correo", name="clave", etc. en los tres inputs.', f:t => {
+        const campos = camposDeTipo(t, ['email','password','number']);
+        return campos.length === 3 && campos.every(a => !!atributo(a,'name'));
+    }},
+    { d:'Cada campo tiene su &lt;label&gt; con for = id', p:'Dale un id distinto a cada input y un &lt;label for="ese-id"&gt; a cada uno.', f:t => todosEtiquetados(t, camposDeTipo(t, ['email','password','number'])) }
+  ]},
+  f3: { requisitos: [
+    { d:'Usa un radio', p:'Agregá &lt;input type="radio"&gt;.', f:t => etiquetas(t,'input').some(a => tipoDe(a) === 'radio') },
+    { d:'Usa un checkbox', p:'Agregá &lt;input type="checkbox"&gt;.', f:t => etiquetas(t,'input').some(a => tipoDe(a) === 'checkbox') },
+    { d:'Usa dos &lt;label&gt; con for', p:'Escribí dos etiquetas con su atributo for.', f:t => etiquetas(t,'label').filter(a => !!atributo(a,'for')).length >= 2 },
+    { d:'Usa id en los campos', p:'Poné id="visa" e id="news" (o los que quieras) en los inputs.', f:t => idsDe(t).length >= 2 },
+    { d:'Cada label apunta al id de su campo', p:'El for de cada label tiene que copiar exactamente el id de su input.', f:t => labelsQueApuntan(t, idsDe(t)).length >= 2 }
+  ]},
+  f4: { requisitos: [
+    { d:'Usa &lt;select&gt;', p:'Agregá &lt;select&gt; con sus &lt;option&gt;.', f:t => etiquetas(t,'select').length >= 1 },
+    { d:'Usa dos &lt;option&gt;', p:'Poné dos opciones dentro del &lt;select&gt;.', f:t => etiquetas(t,'option').length >= 2 },
+    { d:'Usa &lt;textarea&gt;', p:'Agregá &lt;textarea&gt;&lt;/textarea&gt; (lleva etiqueta de cierre).', f:t => etiquetas(t,'textarea').length >= 1 },
+    { d:'Usa &lt;button type="submit"&gt;', p:'Cerrá con &lt;button type="submit"&gt;Enviar&lt;/button&gt;.', f:t => etiquetas(t,'button').some(a => tipoDe(a) === 'submit') },
+    { d:'Usa name en select y textarea', p:'Poné name="pais" en el select y name="mensaje" en el textarea.', f:t => {
+        const sel = etiquetas(t,'select')[0];
+        const ta = etiquetas(t,'textarea')[0];
+        return !!sel && !!ta && !!atributo(sel,'name') && !!atributo(ta,'name');
+    }},
+    { d:'Cada control tiene su &lt;label&gt; con for = id', p:'El &lt;select&gt; y el &lt;textarea&gt; necesitan id y su &lt;label for="ese-id"&gt;.', f:t => todosEtiquetados(t, etiquetas(t,'select').concat(etiquetas(t,'textarea'))) }
+  ]}
+};
+
+/* El formulario de ejemplo no envía nada */
+const formDemo = document.getElementById('form-demo');
+if (formDemo){
+  formDemo.addEventListener('submit', function(e){ e.preventDefault(); });
+}
+</script>
+<script src="../scripts/ejercicios.js" defer></script>
+<script src="../scripts/entrega.js" defer></script>
+</body>
+</html>

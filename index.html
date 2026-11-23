@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang=es>
 <head>
     <meta charset=UTF-8>
@@ -8,6 +8,7 @@
     <link rel=stylesheet href=estilos.css>
 </head>
 <body>
+    <a class=skip-link href=#main>Ir al contenido</a>
 
     <!-- ==========================================
          ENCABEZADO / HEADER
@@ -29,7 +30,7 @@
         </div>
     </header>
 
-    <main class=contenedor>
+    <main id=main class=contenedor>
 
         <!-- ==========================================
              GUÍAS DE APOYO (ACCESO A LOS TEMAS)
@@ -44,13 +45,13 @@
             </div>
 
             <div class=grid-guias>
-                <a class=tarjeta-guia href=https://miusuariohoy.github.io/HTMLTablas/>
+                <a class=tarjeta-guia href=imagenes-tablas/>
                     <span class=icono-guia aria-hidden=true>🖼️</span>
                     <h3>Imágenes y tablas</h3>
                     <p>Aprendé a insertar imágenes con <code>&lt;img&gt;</code>, escribir un <code>alt</code> accesible y organizar datos en tablas con <code>&lt;caption&gt;</code> y <code>scope</code>.</p>
                     <span class=cta-guia>Abrir guía →</span>
                 </a>
-                <a class=tarjeta-guia href=https://miusuariohoy.github.io/HTMLForm/>
+                <a class=tarjeta-guia href=formularios/>
                     <span class=icono-guia aria-hidden=true>📝</span>
                     <h3>Formularios</h3>
                     <p>Etiquetas, campos, opciones y botones: armá un formulario accesible, publicalo en GitHub Pages y entregá el link.</p>
@@ -178,7 +179,7 @@
                         <h4>Enlaces (&lt;a&gt;)</h4>
                         <p><code>&lt;a href=...&gt;</code> crea vínculos entre páginas: el atributo <code>href</code> indica el destino y el texto entre etiquetas es lo que ve el visitante. Las imágenes se ven en la guía de apoyo.</p>
                         <pre><code>&lt;a href=sobre-mi.html&gt;Ir a Sobre Mí&lt;/a&gt;</code></pre>
-                        <p><a class=link-guia href=https://miusuariohoy.github.io/HTMLTablas/>→ Ver la guía completa de imágenes y tablas</a></p>
+                        <p><a class=link-guia href=imagenes-tablas/>→ Ver la guía completa de imágenes y tablas</a></p>
                     </div>
                 </div>
             </article>
@@ -465,11 +466,12 @@ Por favor, genera un archivo completo estilos.css con los siguientes requisitos:
                     <li>Ambas páginas usan el mismo archivo <code>estilos.css</code>.</li>
                     <li>Probaste la página en el celular o con la vista móvil del navegador.</li>
                 </ul>
+                <p class=nota><strong>Prerrequisito:</strong> antes de entregar, revisá la guía <a href=imagenes-tablas/>Imágenes y tablas</a>: necesitás saber escribir un <code>&lt;img&gt;</code> con un <code>alt</code> útil.</p>
                 <p>Completá el formulario con tu <strong>nombre</strong>, <strong>apellido</strong>, <strong>curso</strong> y el <strong>link</strong> de tu sitio. La entrega se guarda como <strong>Entrega HTML Sitio Web</strong> en el repositorio <code>inform</code>, sin nota, y aparece en el informe en unos minutos.</p>
             </article>
 
             <div class=ejemplo>
-                <form class=entrega-form id=form-entrega>
+                <form class=entrega-form id=form-entrega data-examen=entrega-html-sitio-web data-titulo="Entrega HTML Sitio Web" data-detalle="Link del sitio">
                     <fieldset>
                         <legend>Datos de la entrega</legend>
                         <label for=ent-nombre>Nombre:</label>
@@ -484,7 +486,7 @@ Por favor, genera un archivo completo estilos.css con los siguientes requisitos:
                     </fieldset>
                 </form>
                 <div class="estado-entrega" id=estado-entrega role=status aria-live=polite></div>
-                <p class=nota><strong>Privacidad:</strong> solo guardamos tu nombre, apellido, curso y el link de tu sitio. No pedimos contraseñas ni datos bancarios.</p>
+                <p class=nota><strong>Privacidad:</strong> guardamos nombre, apellido, curso, link y fecha de envío. El envío usa un canal público con el contenido cifrado; no pedimos contraseñas ni datos sensibles.</p>
             </div>
         </section>
 
@@ -497,6 +499,7 @@ Por favor, genera un archivo completo estilos.css con los siguientes requisitos:
         <div class=contenedor>
             <p><strong>Material Pedagógico de Desarrollo Web Inicial</strong></p>
             <p>Diseñado con estándares HTML5 y buenas prácticas de enseñanza interactiva.</p>
+            <p>Diseñado por Profesora Alejandra Moreira</p>
         </div>
     </footer>
 
@@ -504,43 +507,7 @@ Por favor, genera un archivo completo estilos.css con los siguientes requisitos:
     /* ============================================================
        ACTIVIDADES CON CORRECCIÓN
        ============================================================ */
-    function etiquetas(texto, nombre){
-      const re = new RegExp('<' + nombre + '\\b([^>]*)>', 'gi');
-      const encontradas = [];
-      let coincidencia;
-      while ((coincidencia = re.exec(texto))) encontradas.push(coincidencia[1]);
-      return encontradas;
-    }
-
-    function etiquetasConContenido(texto, nombre){
-      const re = new RegExp('<' + nombre + '\\b([^>]*)>([\\s\\S]*?)<\\/' + nombre + '\\s*>', 'gi');
-      const encontradas = [];
-      let coincidencia;
-      while ((coincidencia = re.exec(texto))) {
-        encontradas.push({ attrs: coincidencia[1], contenido: coincidencia[2] });
-      }
-      return encontradas;
-    }
-
-    function atributo(atributos, nombre){
-      const re = new RegExp('\\b' + nombre + '\\s*=\\s*(?:"([^"]*)"|\'([^\']*)\'|([^\\s>]+))', 'i');
-      const m = re.exec(atributos);
-      if (!m) return null;
-      if (m[1] !== undefined) return m[1];
-      if (m[2] !== undefined) return m[2];
-      return m[3];
-    }
-
-    function textoVisible(html){
-      return String(html || '')
-        .replace(/<[^>]*>/g, ' ')
-        .replace(/&[a-z0-9#]+;/gi, ' ')
-        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase().replace(/[^a-z0-9]+/g, ' ')
-        .trim();
-    }
-
-    const EJERCICIOS = {
+    window.EJERCICIOS = {
       a1: { requisitos: [
         { d:'Usa &lt;!DOCTYPE html&gt;', p:'La primera línea tiene que ser &lt;!DOCTYPE html&gt;.', f:t => /<!doctype\s+html\s*>/i.test(t) },
         { d:'El &lt;html&gt; tiene lang', p:'Escribí &lt;html lang="es"&gt;.', f:t => /<html\b[^>]*\blang\s*=/i.test(t) },
@@ -573,175 +540,8 @@ Por favor, genera un archivo completo estilos.css con los siguientes requisitos:
       ]}
     };
 
-    function corregir(boton){
-      const art = boton.closest('.ejercicio');
-      const texto = art.querySelector('.respuesta').value;
-      const datos = EJERCICIOS[art.dataset.id];
-      const resultados = datos.requisitos.map(function(r){
-        return { texto:r.d, pista:r.p, ok: !!r.f(texto) };
-      });
-      const bien = resultados.filter(function(r){ return r.ok; }).length;
-      const total = resultados.length;
-      const perfecto = bien === total;
-      art.classList.toggle('correcto', perfecto);
-      art.querySelector('.resultado').innerHTML =
-        '<div class="resumen' + (perfecto ? '' : ' parcial') + '">' +
-          (perfecto ? '✅ ' : '✍️ ') + bien + ' de ' + total + ' requisitos cumplidos' +
-        '</div><ul>' +
-        resultados.map(function(r){
-          return '<li class="' + (r.ok ? 'si' : 'no') + '">' + (r.ok ? '✅' : '❌') + ' ' + r.texto +
-            (r.ok || !r.pista ? '' : '<span class="pista">Pista: ' + r.pista + '</span>') + '</li>';
-        }).join('') + '</ul>';
-    }
-
-    document.querySelectorAll('.corregir').forEach(function(b){
-      b.addEventListener('click', function(){ corregir(b); });
-    });
-
-    document.querySelectorAll('.limpiar').forEach(function(b){
-      b.addEventListener('click', function(){
-        const art = b.closest('.ejercicio');
-        art.querySelector('.respuesta').value = '';
-        art.querySelector('.resultado').innerHTML = '';
-        art.classList.remove('correcto');
-      });
-    });
-
-    /* ============================================================
-       ENTREGA: mismo canal cifrado que el resto de las entregas
-       ============================================================ */
-    const ENTREGA = {
-      NTFY_TOPIC: 'py1-inform-7ae6582c6449a0fd',
-      CLAVE_PUBLICA: 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy4M/CjOEBBmnmgPc2B+yj5O55KOVGE7voIQ41DWI8OMuuQVNlWgzUPgTxW58x7hOW/my1uiUNbNZvm3oixTZJtBw8Lxi8rMVCv9gRArhU8QELEyY1EjB9VCYxZ0UysC1375+m+J757GB3nweSvjRY5esbKzvYOLwh7Lj+sRY6mNgygm/RkeQKhqQ2u/L+PkIVZ7J9evXDofKYP6MOayW6kM61wqFjh32pE5kjDwMkIBmX73BgTD2elxP8iIfvKhr+dqVgft93Gn9x21SxbF1/Ih0ObpCzzTzbMsl2MRiZKR7PndaO7Wtbt1MxbvtvrpV/nTct6bMx1Rl9amYxtsdRwIDAQAB',
-      EXAMEN: 'entrega-html-sitio-web',
-      TITULO: 'Entrega HTML Sitio Web',
-      MATERIA: 'HTML'
-    };
-
-    function b64DeBuffer(buffer){
-      const bytes = new Uint8Array(buffer);
-      let bin = '';
-      for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
-      return btoa(bin);
-    }
-
-    function bufferDeB64(texto){
-      const bin = atob(texto);
-      const bytes = new Uint8Array(bin.length);
-      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-      return bytes;
-    }
-
-    function comprimir(datos){
-      if (!window.CompressionStream || !window.Response || !window.Blob) {
-        return Promise.resolve({ datos: datos, z: 0 });
-      }
-      try {
-        const flujo = new Blob([datos]).stream().pipeThrough(new window.CompressionStream('gzip'));
-        return new Response(flujo).arrayBuffer().then(function(buffer){
-          return { datos: new Uint8Array(buffer), z: 1 };
-        }).catch(function(){ return { datos: datos, z: 0 }; });
-      } catch (e) {
-        return Promise.resolve({ datos: datos, z: 0 });
-      }
-    }
-
-    function cifrarPayload(payload){
-      if (!window.crypto || !window.crypto.subtle) {
-        return Promise.reject(new Error('Este navegador no soporta cifrado. Probá con Chrome o Firefox actualizado.'));
-      }
-      const datos = new TextEncoder().encode(JSON.stringify(payload));
-      return comprimir(datos).then(function(paquete){
-        return window.crypto.subtle.importKey(
-          'spki', bufferDeB64(ENTREGA.CLAVE_PUBLICA),
-          { name: 'RSA-OAEP', hash: 'SHA-256' }, false, ['encrypt']
-        ).then(function(clavePublica){
-          return window.crypto.subtle.generateKey(
-            { name: 'AES-GCM', length: 256 }, true, ['encrypt']
-          ).then(function(claveAes){
-            const iv = window.crypto.getRandomValues(new Uint8Array(12));
-            return window.crypto.subtle.encrypt(
-              { name: 'AES-GCM', iv: iv }, claveAes, paquete.datos
-            ).then(function(cifrado){
-              return window.crypto.subtle.exportKey('raw', claveAes).then(function(cruda){
-                return window.crypto.subtle.encrypt(
-                  { name: 'RSA-OAEP' }, clavePublica, cruda
-                ).then(function(claveCifrada){
-                  return {
-                    k: b64DeBuffer(claveCifrada),
-                    i: b64DeBuffer(iv),
-                    d: b64DeBuffer(cifrado),
-                    z: paquete.z
-                  };
-                });
-              });
-            });
-          });
-        });
-      });
-    }
-
-    function enviarEntrega(payload){
-      return cifrarPayload(payload).then(function(sobre){
-        return fetch('https://ntfy.sh/' + encodeURIComponent(ENTREGA.NTFY_TOPIC), {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify(sobre)
-        }).then(function(r){
-          if (!r.ok) throw new Error('El canal respondió ' + r.status);
-          return true;
-        });
-      });
-    }
-
-    const formEntrega = document.getElementById('form-entrega');
-    if (formEntrega){
-      formEntrega.addEventListener('submit', function(e){
-        e.preventDefault();
-        const estado = document.getElementById('estado-entrega');
-        const datos = new FormData(formEntrega);
-        const nombre = String(datos.get('nombre') || '').trim();
-        const apellido = String(datos.get('apellido') || '').trim();
-        const curso = String(datos.get('curso') || '').trim();
-        const link = String(datos.get('link') || '').trim();
-
-        if (!nombre || !apellido || !curso || !link){
-          estado.className = 'estado-entrega error';
-          estado.textContent = '❌ Completá todos los campos.';
-          return;
-        }
-
-        const payload = {
-          apellido: apellido,
-          nombre: nombre,
-          curso: curso,
-          examen: ENTREGA.EXAMEN,
-          titulo: ENTREGA.TITULO,
-          materia: ENTREGA.MATERIA,
-          nota: 0,
-          puntosA: 0,
-          puntosB: 0,
-          puntosC: 0,
-          errores: 'Sin errores',
-          detalle: 'Link del sitio: ' + link,
-          respuestas: { enlace: link },
-          momento: new Date().toISOString(),
-          navegador: String(navigator.userAgent || '').slice(0, 400),
-          origen: String(location.href || '').slice(0, 300)
-        };
-
-        estado.className = 'estado-entrega';
-        estado.textContent = 'Enviando entrega…';
-        enviarEntrega(payload).then(function(){
-          estado.className = 'estado-entrega ok';
-          estado.textContent = '✅ Entrega enviada. Tu nombre, apellido, curso y link se guardarán en el repositorio inform como «Entrega HTML Sitio Web» en unos minutos.';
-          formEntrega.reset();
-        }).catch(function(error){
-          estado.className = 'estado-entrega error';
-          estado.textContent = '❌ No se pudo enviar: ' + error.message;
-        });
-      });
-    }
     </script>
+    <script src=scripts/ejercicios.js defer></script>
+    <script src=scripts/entrega.js defer></script>
 </body>
 </html>
