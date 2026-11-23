@@ -6,9 +6,6 @@
     <meta name=description content="Guía principal de Desarrollo Web Inicial: fundamentos de HTML5 semántico, consigna práctica, CSS con inteligencia artificial y publicación en GitHub Pages, con enlaces a las guías de imágenes, tablas y formularios.">
     <title>Guía de Trabajo: Desarrollo Web Inicial (HTML5 + CSS con IA)</title>
     <link rel=stylesheet href=estilos.css>
-    <link rel=preconnect href=https://fonts.googleapis.com>
-    <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
-    <link href=https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700;800&display=swap rel=stylesheet>
 </head>
 <body>
 
@@ -23,9 +20,11 @@
             <nav class=nav-rapida aria-label="Navegación principal">
                 <a href=#guias class=btn-enlace btn-guia>📚 Guías de apoyo</a>
                 <a href=#teoria class=btn-enlace>📖 1. Apartado Teórico (HTML5)</a>
-                <a href=#practica class=btn-enlace>🛠️ 2. Consigna Práctica</a>
-                <a href=#desafio-ia class=btn-enlace>🤖 3. Estilos CSS con IA</a>
-                <a href=#github class=btn-enlace>🚀 4. Publicar en GitHub</a>
+                <a href=#actividades class=btn-enlace>✍️ 2. Actividades</a>
+                <a href=#practica class=btn-enlace>🛠️ 3. Consigna Práctica</a>
+                <a href=#desafio-ia class=btn-enlace>🤖 4. Estilos CSS con IA</a>
+                <a href=#github class=btn-enlace>🚀 5. Publicar en GitHub</a>
+                <a href=#entrega class=btn-enlace btn-guia>📮 6. Entregar trabajo</a>
             </nav>
         </div>
     </header>
@@ -176,10 +175,9 @@
                     </div>
 
                     <div class=item-etiqueta>
-                        <h4>Enlaces (&lt;a&gt;) e Imágenes (&lt;img&gt;)</h4>
-                        <p><code>&lt;a href=...&gt;</code> crea vínculos entre páginas. <code>&lt;img src=... alt=...&gt;</code> inserta imágenes con texto descriptivo obligatorio.</p>
-                        <pre><code>&lt;a href=sobre-mi.html&gt;Ir a Sobre Mí&lt;/a&gt;
-&lt;img src=img/foto.jpg alt=Foto descriptiva&gt;</code></pre>
+                        <h4>Enlaces (&lt;a&gt;)</h4>
+                        <p><code>&lt;a href=...&gt;</code> crea vínculos entre páginas: el atributo <code>href</code> indica el destino y el texto entre etiquetas es lo que ve el visitante. Las imágenes se ven en la guía de apoyo.</p>
+                        <pre><code>&lt;a href=sobre-mi.html&gt;Ir a Sobre Mí&lt;/a&gt;</code></pre>
                         <p><a class=link-guia href=https://miusuariohoy.github.io/HTMLTablas/>→ Ver la guía completa de imágenes y tablas</a></p>
                     </div>
                 </div>
@@ -220,11 +218,100 @@
         </section>
 
         <!-- ==========================================
-             SECCIÓN 2: ACTIVIDAD PRÁCTICA (CONSIGNA)
+             SECCIÓN 2: ACTIVIDADES CON CORRECCIÓN
+             ========================================== -->
+        <section id=actividades class=bloque-principal>
+            <div class=encabezado-seccion>
+                <span class=numero-paso>02</span>
+                <div>
+                    <h2>Actividades con corrección</h2>
+                    <p>Probá lo que aprendiste: escribí el código y presioná <strong>✅ Corregir</strong>. Si falta algo, aparece una pista al lado del requisito.</p>
+                </div>
+            </div>
+
+            <article class=ejercicio data-id=a1>
+                <h3>✍️ Actividad 1: la estructura base <span class=nivel>Fácil</span></h3>
+                <p class=consigna>Escribí un documento HTML5 completo: <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html lang=es&gt;</code>, <code>&lt;head&gt;</code> con <code>&lt;meta charset&gt;</code> y <code>&lt;title&gt;</code>, y un <code>&lt;body&gt;</code> con contenido.</p>
+                <textarea class=respuesta spellcheck=false placeholder="Escribí tu documento HTML…"></textarea>
+                <div class=acciones>
+                    <button type=button class="accion corregir">✅ Corregir</button>
+                    <button type=button class="accion limpiar">Limpiar</button>
+                </div>
+                <div class=resultado></div>
+                <details class=solucion><summary>Ver solución esperada</summary>
+                    <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Mi primera página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hola&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                </details>
+            </article>
+
+            <article class=ejercicio data-id=a2>
+                <h3>✍️ Actividad 2: títulos y párrafos <span class=nivel>Fácil</span></h3>
+                <p class=consigna>Escribí un <code>&lt;h1&gt;</code> con título y un <code>&lt;p&gt;</code> que tenga una palabra en <code>&lt;strong&gt;</code>. Usá un solo <code>&lt;h1&gt;</code>.</p>
+                <textarea class=respuesta spellcheck=false placeholder="Escribí tus títulos y textos…"></textarea>
+                <div class=acciones>
+                    <button type=button class="accion corregir">✅ Corregir</button>
+                    <button type=button class="accion limpiar">Limpiar</button>
+                </div>
+                <div class=resultado></div>
+                <details class=solucion><summary>Ver solución esperada</summary>
+                    <pre>&lt;h1&gt;Mi sitio web&lt;/h1&gt;
+&lt;p&gt;Este es mi &lt;strong&gt;primer&lt;/strong&gt; párrafo.&lt;/p&gt;</pre>
+                </details>
+            </article>
+
+            <article class=ejercicio data-id=a3>
+                <h3>✍️ Actividad 3: una lista <span class=nivel>Fácil</span></h3>
+                <p class=consigna>Armá una lista con <code>&lt;ul&gt;</code> (o <code>&lt;ol&gt;</code>) y al menos <strong>3 elementos</strong> <code>&lt;li&gt;</code> con texto, todos dentro de la lista.</p>
+                <textarea class=respuesta spellcheck=false placeholder="Escribí tu lista…"></textarea>
+                <div class=acciones>
+                    <button type=button class="accion corregir">✅ Corregir</button>
+                    <button type=button class="accion limpiar">Limpiar</button>
+                </div>
+                <div class=resultado></div>
+                <details class=solucion><summary>Ver solución esperada</summary>
+                    <pre>&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;GitHub&lt;/li&gt;
+&lt;/ul&gt;</pre>
+                </details>
+            </article>
+
+            <article class=ejercicio data-id=a4>
+                <h3>✍️ Actividad 4: enlaces y semántica <span class=nivel>Medio</span></h3>
+                <p class=consigna>Escribí un enlace con <code>&lt;a href=...&gt;</code> y texto visible, y usá <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code> y <code>&lt;footer&gt;</code>.</p>
+                <textarea class=respuesta spellcheck=false placeholder="Escribí tu estructura semántica…"></textarea>
+                <div class=acciones>
+                    <button type=button class="accion corregir">✅ Corregir</button>
+                    <button type=button class="accion limpiar">Limpiar</button>
+                </div>
+                <div class=resultado></div>
+                <details class=solucion><summary>Ver solución esperada</summary>
+                    <pre>&lt;header&gt;
+  &lt;nav&gt;&lt;a href="index.html"&gt;Inicio&lt;/a&gt;&lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+  &lt;section&gt;Contenido principal&lt;/section&gt;
+&lt;/main&gt;
+&lt;footer&gt;Fin de la página&lt;/footer&gt;</pre>
+                </details>
+            </article>
+        </section>
+
+        <!-- ==========================================
+             SECCIÓN 3: ACTIVIDAD PRÁCTICA (CONSIGNA)
              ========================================== -->
         <section id=practica class=bloque-principal>
             <div class=encabezado-seccion>
-                <span class=numero-paso>02</span>
+                <span class=numero-paso>03</span>
                 <div>
                     <h2>Consigna Práctica: ¡Construye tu propio Sitio Web!</h2>
                     <p>Ahora es tu turno de programar. Sigue estos pasos para crear tu web desde cero.</p>
@@ -261,11 +348,11 @@
         </section>
 
         <!-- ==========================================
-             SECCIÓN 3: CSS CON INTELIGENCIA ARTIFICIAL
+             SECCIÓN 4: CSS CON INTELIGENCIA ARTIFICIAL
              ========================================== -->
         <section id=desafio-ia class=bloque-principal>
             <div class=encabezado-seccion>
-                <span class=numero-paso>03</span>
+                <span class=numero-paso>04</span>
                 <div>
                     <h2>Laboratorio de IA: Diseñando el CSS de tu Web</h2>
                     <p>No programarás el CSS desde cero: aprenderás a ser un director de diseño utilizando IA con criterio técnico.</p>
@@ -306,11 +393,11 @@ Por favor, genera un archivo completo estilos.css con los siguientes requisitos:
         </section>
 
         <!-- ==========================================
-             SECCIÓN 4: PUBLICACIÓN EN GITHUB PAGES
+             SECCIÓN 5: PUBLICACIÓN EN GITHUB PAGES
              ========================================== -->
         <section id=github class=bloque-principal>
             <div class=encabezado-seccion>
-                <span class=numero-paso>04</span>
+                <span class=numero-paso>05</span>
                 <div>
                     <h2>Publica tu Proyecto en GitHub Pages</h2>
                     <p>Comparte tu creación con el mundo y entrega tu trabajo final con un link en vivo.</p>
@@ -356,6 +443,51 @@ Por favor, genera un archivo completo estilos.css con los siguientes requisitos:
             </article>
         </section>
 
+        <!-- ==========================================
+             SECCIÓN 6: ENTREGA DEL TRABAJO
+             ========================================== -->
+        <section id=entrega class=bloque-principal>
+            <div class=encabezado-seccion>
+                <span class=numero-paso>06</span>
+                <div>
+                    <h2>Entregá tu trabajo</h2>
+                    <p>Publicá tu sitio en GitHub Pages y enviá el link para que quede registrado.</p>
+                </div>
+            </div>
+
+            <article class=tarjeta-info>
+                <h3>Antes de entregar, verificá esta checklist</h3>
+                <ul class=checklist>
+                    <li>El link abre y muestra tu sitio (probalo vos primero).</li>
+                    <li>Tenés al menos dos páginas HTML unidas por un menú <code>&lt;nav&gt;</code> con enlaces <code>&lt;a&gt;</code>.</li>
+                    <li>Usaste <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code> y <code>&lt;footer&gt;</code>.</li>
+                    <li>Tu contenido incluye una imagen con <code>alt</code>, negritas y una lista.</li>
+                    <li>Ambas páginas usan el mismo archivo <code>estilos.css</code>.</li>
+                    <li>Probaste la página en el celular o con la vista móvil del navegador.</li>
+                </ul>
+                <p>Completá el formulario con tu <strong>nombre</strong>, <strong>apellido</strong>, <strong>curso</strong> y el <strong>link</strong> de tu sitio. La entrega se guarda como <strong>Entrega HTML Sitio Web</strong> en el repositorio <code>inform</code>, sin nota, y aparece en el informe en unos minutos.</p>
+            </article>
+
+            <div class=ejemplo>
+                <form class=entrega-form id=form-entrega>
+                    <fieldset>
+                        <legend>Datos de la entrega</legend>
+                        <label for=ent-nombre>Nombre:</label>
+                        <input id=ent-nombre name=nombre type=text placeholder="Tu nombre" required>
+                        <label for=ent-apellido>Apellido:</label>
+                        <input id=ent-apellido name=apellido type=text placeholder="Tu apellido" required>
+                        <label for=ent-curso>Curso:</label>
+                        <input id=ent-curso name=curso type=text placeholder="Ej: 3º A" required>
+                        <label for=ent-link>Link de tu sitio publicado:</label>
+                        <input id=ent-link name=link type=url placeholder="https://..." required>
+                        <button type=submit>Entregar</button>
+                    </fieldset>
+                </form>
+                <div class="estado-entrega" id=estado-entrega role=status aria-live=polite></div>
+                <p class=nota><strong>Privacidad:</strong> solo guardamos tu nombre, apellido, curso y el link de tu sitio. No pedimos contraseñas ni datos bancarios.</p>
+            </div>
+        </section>
+
     </main>
 
     <!-- ==========================================
@@ -368,5 +500,248 @@ Por favor, genera un archivo completo estilos.css con los siguientes requisitos:
         </div>
     </footer>
 
+    <script>
+    /* ============================================================
+       ACTIVIDADES CON CORRECCIÓN
+       ============================================================ */
+    function etiquetas(texto, nombre){
+      const re = new RegExp('<' + nombre + '\\b([^>]*)>', 'gi');
+      const encontradas = [];
+      let coincidencia;
+      while ((coincidencia = re.exec(texto))) encontradas.push(coincidencia[1]);
+      return encontradas;
+    }
+
+    function etiquetasConContenido(texto, nombre){
+      const re = new RegExp('<' + nombre + '\\b([^>]*)>([\\s\\S]*?)<\\/' + nombre + '\\s*>', 'gi');
+      const encontradas = [];
+      let coincidencia;
+      while ((coincidencia = re.exec(texto))) {
+        encontradas.push({ attrs: coincidencia[1], contenido: coincidencia[2] });
+      }
+      return encontradas;
+    }
+
+    function atributo(atributos, nombre){
+      const re = new RegExp('\\b' + nombre + '\\s*=\\s*(?:"([^"]*)"|\'([^\']*)\'|([^\\s>]+))', 'i');
+      const m = re.exec(atributos);
+      if (!m) return null;
+      if (m[1] !== undefined) return m[1];
+      if (m[2] !== undefined) return m[2];
+      return m[3];
+    }
+
+    function textoVisible(html){
+      return String(html || '')
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/&[a-z0-9#]+;/gi, ' ')
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase().replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+    }
+
+    const EJERCICIOS = {
+      a1: { requisitos: [
+        { d:'Usa &lt;!DOCTYPE html&gt;', p:'La primera línea tiene que ser &lt;!DOCTYPE html&gt;.', f:t => /<!doctype\s+html\s*>/i.test(t) },
+        { d:'El &lt;html&gt; tiene lang', p:'Escribí &lt;html lang="es"&gt;.', f:t => /<html\b[^>]*\blang\s*=/i.test(t) },
+        { d:'Usa &lt;head&gt; con &lt;title&gt; y texto', p:'Agregá &lt;head&gt; y un &lt;title&gt;Mi página&lt;/title&gt;.', f:t => /<head\b/i.test(t) && etiquetasConContenido(t,'title').some(x => textoVisible(x.contenido).length > 0) },
+        { d:'Usa &lt;meta charset&gt;', p:'Dentro del head poné &lt;meta charset="UTF-8"&gt;.', f:t => /<meta\b[^>]*\bcharset\s*=/i.test(t) },
+        { d:'Usa &lt;body&gt; con contenido', p:'Cerrá con &lt;body&gt; y escribí algo adentro.', f:t => etiquetasConContenido(t,'body').some(x => textoVisible(x.contenido).length > 0) }
+      ]},
+      a2: { requisitos: [
+        { d:'Usa una sola &lt;h1&gt; con texto', p:'Escribí un solo &lt;h1&gt;Mi título&lt;/h1&gt;.', f:t => etiquetasConContenido(t,'h1').length === 1 && etiquetasConContenido(t,'h1').some(x => textoVisible(x.contenido).length > 0) },
+        { d:'Usa &lt;p&gt; con texto', p:'Agregá un párrafo: &lt;p&gt;Texto...&lt;/p&gt;.', f:t => etiquetasConContenido(t,'p').some(x => textoVisible(x.contenido).length > 0) },
+        { d:'Usa &lt;strong&gt; dentro del párrafo', p:'Poné una palabra en &lt;strong&gt;negrita&lt;/strong&gt; dentro del &lt;p&gt;.', f:t => etiquetasConContenido(t,'p').some(x => etiquetas(x.contenido,'strong').length >= 1) }
+      ]},
+      a3: { requisitos: [
+        { d:'Usa &lt;ul&gt; u &lt;ol&gt;', p:'Envolvé la lista con &lt;ul&gt; y &lt;/ul&gt; (o &lt;ol&gt;).', f:t => etiquetas(t,'ul').length >= 1 || etiquetas(t,'ol').length >= 1 },
+        { d:'Usa al menos tres &lt;li&gt;', p:'Agregá tres o más &lt;li&gt;contenido&lt;/li&gt;.', f:t => etiquetas(t,'li').length >= 3 },
+        { d:'Los &lt;li&gt; están dentro de la lista', p:'Poné los &lt;li&gt; adentro del &lt;ul&gt; o &lt;ol&gt;.', f:t => {
+            const listas = etiquetasConContenido(t,'ul').concat(etiquetasConContenido(t,'ol'));
+            return listas.some(l => etiquetas(l.contenido,'li').length >= 3);
+          } },
+        { d:'Cada ítem tiene texto', p:'Escribí texto dentro de cada &lt;li&gt;.', f:t => {
+            const items = etiquetasConContenido(t,'li');
+            return items.length >= 3 && items.every(i => textoVisible(i.contenido).length > 0);
+          } }
+      ]},
+      a4: { requisitos: [
+        { d:'Usa &lt;a&gt; con href', p:'Escribí &lt;a href="index.html"&gt;Inicio&lt;/a&gt;.', f:t => etiquetas(t,'a').some(a => !!atributo(a,'href')) },
+        { d:'El enlace tiene texto visible', p:'Agregá texto entre &lt;a&gt; y &lt;/a&gt;.', f:t => etiquetasConContenido(t,'a').some(a => textoVisible(a.contenido).length > 0) },
+        { d:'Usa &lt;header&gt;, &lt;main&gt; y &lt;footer&gt;', p:'Agregá esas tres etiquetas semánticas.', f:t => ['header','main','footer'].every(n => etiquetas(t,n).length >= 1) },
+        { d:'Usa &lt;nav&gt; y &lt;section&gt;', p:'Poné el menú en &lt;nav&gt; y el contenido en &lt;section&gt;.', f:t => etiquetas(t,'nav').length >= 1 && etiquetas(t,'section').length >= 1 }
+      ]}
+    };
+
+    function corregir(boton){
+      const art = boton.closest('.ejercicio');
+      const texto = art.querySelector('.respuesta').value;
+      const datos = EJERCICIOS[art.dataset.id];
+      const resultados = datos.requisitos.map(function(r){
+        return { texto:r.d, pista:r.p, ok: !!r.f(texto) };
+      });
+      const bien = resultados.filter(function(r){ return r.ok; }).length;
+      const total = resultados.length;
+      const perfecto = bien === total;
+      art.classList.toggle('correcto', perfecto);
+      art.querySelector('.resultado').innerHTML =
+        '<div class="resumen' + (perfecto ? '' : ' parcial') + '">' +
+          (perfecto ? '✅ ' : '✍️ ') + bien + ' de ' + total + ' requisitos cumplidos' +
+        '</div><ul>' +
+        resultados.map(function(r){
+          return '<li class="' + (r.ok ? 'si' : 'no') + '">' + (r.ok ? '✅' : '❌') + ' ' + r.texto +
+            (r.ok || !r.pista ? '' : '<span class="pista">Pista: ' + r.pista + '</span>') + '</li>';
+        }).join('') + '</ul>';
+    }
+
+    document.querySelectorAll('.corregir').forEach(function(b){
+      b.addEventListener('click', function(){ corregir(b); });
+    });
+
+    document.querySelectorAll('.limpiar').forEach(function(b){
+      b.addEventListener('click', function(){
+        const art = b.closest('.ejercicio');
+        art.querySelector('.respuesta').value = '';
+        art.querySelector('.resultado').innerHTML = '';
+        art.classList.remove('correcto');
+      });
+    });
+
+    /* ============================================================
+       ENTREGA: mismo canal cifrado que el resto de las entregas
+       ============================================================ */
+    const ENTREGA = {
+      NTFY_TOPIC: 'py1-inform-7ae6582c6449a0fd',
+      CLAVE_PUBLICA: 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy4M/CjOEBBmnmgPc2B+yj5O55KOVGE7voIQ41DWI8OMuuQVNlWgzUPgTxW58x7hOW/my1uiUNbNZvm3oixTZJtBw8Lxi8rMVCv9gRArhU8QELEyY1EjB9VCYxZ0UysC1375+m+J757GB3nweSvjRY5esbKzvYOLwh7Lj+sRY6mNgygm/RkeQKhqQ2u/L+PkIVZ7J9evXDofKYP6MOayW6kM61wqFjh32pE5kjDwMkIBmX73BgTD2elxP8iIfvKhr+dqVgft93Gn9x21SxbF1/Ih0ObpCzzTzbMsl2MRiZKR7PndaO7Wtbt1MxbvtvrpV/nTct6bMx1Rl9amYxtsdRwIDAQAB',
+      EXAMEN: 'entrega-html-sitio-web',
+      TITULO: 'Entrega HTML Sitio Web',
+      MATERIA: 'HTML'
+    };
+
+    function b64DeBuffer(buffer){
+      const bytes = new Uint8Array(buffer);
+      let bin = '';
+      for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+      return btoa(bin);
+    }
+
+    function bufferDeB64(texto){
+      const bin = atob(texto);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return bytes;
+    }
+
+    function comprimir(datos){
+      if (!window.CompressionStream || !window.Response || !window.Blob) {
+        return Promise.resolve({ datos: datos, z: 0 });
+      }
+      try {
+        const flujo = new Blob([datos]).stream().pipeThrough(new window.CompressionStream('gzip'));
+        return new Response(flujo).arrayBuffer().then(function(buffer){
+          return { datos: new Uint8Array(buffer), z: 1 };
+        }).catch(function(){ return { datos: datos, z: 0 }; });
+      } catch (e) {
+        return Promise.resolve({ datos: datos, z: 0 });
+      }
+    }
+
+    function cifrarPayload(payload){
+      if (!window.crypto || !window.crypto.subtle) {
+        return Promise.reject(new Error('Este navegador no soporta cifrado. Probá con Chrome o Firefox actualizado.'));
+      }
+      const datos = new TextEncoder().encode(JSON.stringify(payload));
+      return comprimir(datos).then(function(paquete){
+        return window.crypto.subtle.importKey(
+          'spki', bufferDeB64(ENTREGA.CLAVE_PUBLICA),
+          { name: 'RSA-OAEP', hash: 'SHA-256' }, false, ['encrypt']
+        ).then(function(clavePublica){
+          return window.crypto.subtle.generateKey(
+            { name: 'AES-GCM', length: 256 }, true, ['encrypt']
+          ).then(function(claveAes){
+            const iv = window.crypto.getRandomValues(new Uint8Array(12));
+            return window.crypto.subtle.encrypt(
+              { name: 'AES-GCM', iv: iv }, claveAes, paquete.datos
+            ).then(function(cifrado){
+              return window.crypto.subtle.exportKey('raw', claveAes).then(function(cruda){
+                return window.crypto.subtle.encrypt(
+                  { name: 'RSA-OAEP' }, clavePublica, cruda
+                ).then(function(claveCifrada){
+                  return {
+                    k: b64DeBuffer(claveCifrada),
+                    i: b64DeBuffer(iv),
+                    d: b64DeBuffer(cifrado),
+                    z: paquete.z
+                  };
+                });
+              });
+            });
+          });
+        });
+      });
+    }
+
+    function enviarEntrega(payload){
+      return cifrarPayload(payload).then(function(sobre){
+        return fetch('https://ntfy.sh/' + encodeURIComponent(ENTREGA.NTFY_TOPIC), {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(sobre)
+        }).then(function(r){
+          if (!r.ok) throw new Error('El canal respondió ' + r.status);
+          return true;
+        });
+      });
+    }
+
+    const formEntrega = document.getElementById('form-entrega');
+    if (formEntrega){
+      formEntrega.addEventListener('submit', function(e){
+        e.preventDefault();
+        const estado = document.getElementById('estado-entrega');
+        const datos = new FormData(formEntrega);
+        const nombre = String(datos.get('nombre') || '').trim();
+        const apellido = String(datos.get('apellido') || '').trim();
+        const curso = String(datos.get('curso') || '').trim();
+        const link = String(datos.get('link') || '').trim();
+
+        if (!nombre || !apellido || !curso || !link){
+          estado.className = 'estado-entrega error';
+          estado.textContent = '❌ Completá todos los campos.';
+          return;
+        }
+
+        const payload = {
+          apellido: apellido,
+          nombre: nombre,
+          curso: curso,
+          examen: ENTREGA.EXAMEN,
+          titulo: ENTREGA.TITULO,
+          materia: ENTREGA.MATERIA,
+          nota: 0,
+          puntosA: 0,
+          puntosB: 0,
+          puntosC: 0,
+          errores: 'Sin errores',
+          detalle: 'Link del sitio: ' + link,
+          respuestas: { enlace: link },
+          momento: new Date().toISOString(),
+          navegador: String(navigator.userAgent || '').slice(0, 400),
+          origen: String(location.href || '').slice(0, 300)
+        };
+
+        estado.className = 'estado-entrega';
+        estado.textContent = 'Enviando entrega…';
+        enviarEntrega(payload).then(function(){
+          estado.className = 'estado-entrega ok';
+          estado.textContent = '✅ Entrega enviada. Tu nombre, apellido, curso y link se guardarán en el repositorio inform como «Entrega HTML Sitio Web» en unos minutos.';
+          formEntrega.reset();
+        }).catch(function(error){
+          estado.className = 'estado-entrega error';
+          estado.textContent = '❌ No se pudo enviar: ' + error.message;
+        });
+      });
+    }
+    </script>
 </body>
 </html>
