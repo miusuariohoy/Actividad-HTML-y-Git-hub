@@ -198,7 +198,7 @@ main {
 code {
     font-family: 'Fira Code', monospace;
     background-color: #e2e8f0;
-    color: #d946ef;
+    color: #86198f;
     padding: 2px 6px;
     border-radius: 4px;
     font-size: 0.9em;
@@ -265,6 +265,7 @@ pre code {
     border: 1px solid var(--border);
     padding: 18px;
     border-radius: 10px;
+    min-width: 0;
 }
 
 .item-etiqueta h4 {
@@ -487,6 +488,95 @@ pre code {
 
 .pie strong {
     color: #ffffff;
+}
+
+/* ==========================================
+   GUÍAS DE APOYO (PÁGINA PRINCIPAL / HUB)
+   ========================================== */
+main section[id] {
+    scroll-margin-top: 24px;
+}
+
+.grid-guias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.tarjeta-guia {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 5px solid var(--primary);
+    border-radius: 14px;
+    padding: 26px;
+    text-decoration: none;
+    color: var(--text-main);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.tarjeta-guia:nth-child(2) {
+    border-top-color: var(--accent);
+}
+
+.tarjeta-guia:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 22px rgba(15, 23, 42, 0.12);
+    border-color: var(--primary);
+}
+
+.icono-guia {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background-color: var(--primary-light);
+    font-size: 1.6rem;
+}
+
+.tarjeta-guia h3 {
+    color: var(--secondary);
+    font-size: 1.25rem;
+    margin: 12px 0 8px;
+}
+
+.tarjeta-guia p {
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+}
+
+.cta-guia {
+    margin-top: auto;
+    color: var(--primary-dark);
+    font-weight: 700;
+}
+
+.link-guia {
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+.btn-guia {
+    background-color: rgba(245, 158, 11, 0.18);
+    border-color: rgba(245, 158, 11, 0.6);
+}
+
+.tabla-referencia th[scope=row] {
+    background-color: #f8fafc;
+    color: var(--primary-dark);
+    white-space: nowrap;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
 }
 
 /* ==========================================

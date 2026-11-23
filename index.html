@@ -3,6 +3,7 @@
 <head>
     <meta charset=UTF-8>
     <meta name=viewport content=width=device-width, initial-scale=1.0>
+    <meta name=description content="Guía principal de Desarrollo Web Inicial: fundamentos de HTML5 semántico, consigna práctica, CSS con inteligencia artificial y publicación en GitHub Pages, con enlaces a las guías de imágenes, tablas y formularios.">
     <title>Guía de Trabajo: Desarrollo Web Inicial (HTML5 + CSS con IA)</title>
     <link rel=stylesheet href=estilos.css>
     <link rel=preconnect href=https://fonts.googleapis.com>
@@ -19,16 +20,45 @@
             <span class=badge>Curso de Programación Web Inicial</span>
             <h1>Guía de Aprendizaje & Desafío Práctico</h1>
             <p class=subtitulo>Aprende los fundamentos de HTML5 semántico y diseña tu propio sitio web asistido por Inteligencia Artificial.</p>
-            <div class=nav-rapida>
+            <nav class=nav-rapida aria-label="Navegación principal">
+                <a href=#guias class=btn-enlace btn-guia>📚 Guías de apoyo</a>
                 <a href=#teoria class=btn-enlace>📖 1. Apartado Teórico (HTML5)</a>
                 <a href=#practica class=btn-enlace>🛠️ 2. Consigna Práctica</a>
                 <a href=#desafio-ia class=btn-enlace>🤖 3. Estilos CSS con IA</a>
                 <a href=#github class=btn-enlace>🚀 4. Publicar en GitHub</a>
-            </div>
+            </nav>
         </div>
     </header>
 
     <main class=contenedor>
+
+        <!-- ==========================================
+             GUÍAS DE APOYO (ACCESO A LOS TEMAS)
+             ========================================== -->
+        <section id=guias class=bloque-principal guias-principal>
+            <div class=encabezado-seccion>
+                <span class=numero-paso>📚</span>
+                <div>
+                    <h2>Guías de apoyo interactivas</h2>
+                    <p>Repasá estos temas con ejemplos y ejercicios autocorregibles antes de construir tu sitio.</p>
+                </div>
+            </div>
+
+            <div class=grid-guias>
+                <a class=tarjeta-guia href=https://miusuariohoy.github.io/HTMLTablas/>
+                    <span class=icono-guia aria-hidden=true>🖼️</span>
+                    <h3>Imágenes y tablas</h3>
+                    <p>Aprendé a insertar imágenes con <code>&lt;img&gt;</code>, escribir un <code>alt</code> accesible y organizar datos en tablas con <code>&lt;caption&gt;</code> y <code>scope</code>.</p>
+                    <span class=cta-guia>Abrir guía →</span>
+                </a>
+                <a class=tarjeta-guia href=https://miusuariohoy.github.io/HTMLForm/>
+                    <span class=icono-guia aria-hidden=true>📝</span>
+                    <h3>Formularios</h3>
+                    <p>Etiquetas, campos, opciones y botones: armá un formulario accesible, publicalo en GitHub Pages y entregá el link.</p>
+                    <span class=cta-guia>Abrir guía →</span>
+                </a>
+            </div>
+        </section>
 
         <!-- ==========================================
              SECCIÓN 1: APARTADO TEÓRICO Y EXPLICATIVO
@@ -80,37 +110,37 @@
                     <table class=tabla-referencia>
                         <thead>
                             <tr>
-                                <th>Etiqueta / Elemento</th>
-                                <th>¿Para qué sirve?</th>
+                                <th scope=col>Etiqueta / Elemento</th>
+                                <th scope=col>¿Para qué sirve?</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>&lt;!DOCTYPE html&gt;</code></td>
+                                <th scope=row><code>&lt;!DOCTYPE html&gt;</code></th>
                                 <td>Le avisa al navegador que el documento sigue la versión moderna <strong>HTML5</strong>.</td>
                             </tr>
                             <tr>
-                                <td><code>&lt;html lang=es&gt;</code></td>
+                                <th scope=row><code>&lt;html lang=es&gt;</code></th>
                                 <td>Elemento raíz que envuelve todo el sitio. El atributo <code>lang=es</code> define el idioma en español.</td>
                             </tr>
                             <tr>
-                                <td><code>&lt;head&gt;</code></td>
+                                <th scope=row><code>&lt;head&gt;</code></th>
                                 <td>Contiene metadatos, configuración técnica y enlaces a recursos (no se muestra en el cuerpo visual de la página).</td>
                             </tr>
                             <tr>
-                                <td><code>&lt;meta charset=UTF-8&gt;</code></td>
+                                <th scope=row><code>&lt;meta charset=UTF-8&gt;</code></th>
                                 <td>Permite visualizar correctamente caracteres especiales, tildes, signos y la letra ñ.</td>
                             </tr>
                             <tr>
-                                <td><code>&lt;meta name=viewport...&gt;</code></td>
+                                <th scope=row><code>&lt;meta name=viewport...&gt;</code></th>
                                 <td>Permite que la página se adapte al ancho de pantallas móviles y tablets.</td>
                             </tr>
                             <tr>
-                                <td><code>&lt;title&gt;</code></td>
+                                <th scope=row><code>&lt;title&gt;</code></th>
                                 <td>El nombre que se ve en la pestaña del navegador o en los resultados de Google.</td>
                             </tr>
                             <tr>
-                                <td><code>&lt;body&gt;</code></td>
+                                <th scope=row><code>&lt;body&gt;</code></th>
                                 <td>El contenedor de todo el contenido visible: textos, imágenes, videos y botones.</td>
                             </tr>
                         </tbody>
@@ -150,6 +180,7 @@
                         <p><code>&lt;a href=...&gt;</code> crea vínculos entre páginas. <code>&lt;img src=... alt=...&gt;</code> inserta imágenes con texto descriptivo obligatorio.</p>
                         <pre><code>&lt;a href=sobre-mi.html&gt;Ir a Sobre Mí&lt;/a&gt;
 &lt;img src=img/foto.jpg alt=Foto descriptiva&gt;</code></pre>
+                        <p><a class=link-guia href=https://miusuariohoy.github.io/HTMLTablas/>→ Ver la guía completa de imágenes y tablas</a></p>
                     </div>
                 </div>
             </article>
@@ -294,7 +325,7 @@ Por favor, genera un archivo completo estilos.css con los siguientes requisitos:
                         <span class=paso-num>1</span>
                         <div>
                             <h4>Crea tu cuenta y un nuevo repositorio</h4>
-                            <p>Entra a <a href=https://github.com target=_blank>github.com</a>, inicia sesión y haz clic en <strong>New repository</strong>. Nómbralo (ej: <code>mi-primer-sitio</code>) y asegúrate de marcarlo como <strong>Public</strong>.</p>
+                            <p>Entra a <a href=https://github.com target=_blank rel=noopener>github.com</a>, inicia sesión y haz clic en <strong>New repository</strong>. Nómbralo (ej: <code>mi-primer-sitio</code>) y asegúrate de marcarlo como <strong>Public</strong>.</p>
                         </div>
                     </div>
 
